@@ -1,0 +1,40 @@
+
+:root {
+    --darkColour: #242529;
+    --l_dsaBlue: #000066;
+    --l_BlueSmoke: #8ea7c0;
+    --l_BlueCornflower: #287fc1;
+    --l_Khaki: #cdc09e;
+    --l_GreenCaper: #7f8056;
+    --l_GreenYellow: #b0ca04;
+    --l_VioletSlate: #524068;
+    --l_GreenPermanent: #3aa934;
+    --l_GrayMetal: #b4bbbf;
+    --l_YellowJuice: #eeca00;
+    --l_RedOrient: #ab0c21;
+    --l_OrangeRed: #ec6600;
+    --white: #ffffff;
+}
+
+@font-face {
+    font-family: MyriahPro-Regular;
+    src: url(fonts/MyriadPro-Regular.woff);
+}
+
+@font-face {
+    font-family: MyriahPro-lt;
+    src: url(fonts/MyriadPro-It.woff);
+}
+
+@font-face {
+    font-family: MyriahPro-Bold;
+    src: url(fonts/MyriadPro-Bold.woff);
+}
+
+body {
+    background-color: var(--l_BlueCornflower);
+}
+
+
+
+

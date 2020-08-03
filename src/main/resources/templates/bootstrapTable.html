@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
+</head>
+
+
+<body>
+<div layout:fragment="content">
+<div style="margin : 100px;">
+    <button class="btn-primary btn" onclick="load();" >Load Table</button>
+    <button class="btn-primary btn" onclick="reload();">Update Table</button>
+</div>
+<table class="table" id="table">
+    <thead>
+    <tr>
+        <th data-field="id">Item ID</th>
+        <th data-field="email">email</th>
+        <th data-field="priority">priority</th>
+        <th data-field="category">category</th>
+        <th data-field="content">content</th>
+        <th data-field="progress">progress</th>
+
+    </tr>
+    </thead>
+</table>
+<script>
+
+
+
+    $('#table').bootstrapTable({});
+
+
+
+    var mapData = JSON.parse(data);
+    $.ajax({url: 'http://localhost:8080/api/db', type: 'GET', dataType: 'json'}).success(function (data) {
+        mapData = (data);
+    });
+    var dd = JSON.stringify(mapData);
+
+    function load(){
+        var data = dd;
+        $('#table').bootstrapTable("load", data);
+    }
+    function reload(){
+        var data = [{
+            id: '1',
+            email: 'someemail@ggsa.com',
+            priority: 'some',
+            category: 'good',
+            content: 'verygood',
+            progress: 'false'
+        }];
+        $('#table').bootstrapTable("load", data);
+    }
+</script>
+</div>
+</body>
+</html>
