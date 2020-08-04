@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+        <link rel="stylesheet"
+              th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
+
+    <!-- Latest compiled and minified JavaScript -->
+<!--    <script th:src="@{https://cdn.jsdelivr.net/npm/vue}"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--    <script th:src="@{js/jquery.min.js}"></script>-->
+        <script th:src="@{js/bootstrap.min.js}"></script>
+        <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
+</head>
+
+
+<body>
+<div layout:fragment="content" id="app">
+    <table class="table" id="table" v-if="tableData.length">
+        <thead>
+        <tr>
+            <th data-field="id">Item ID</th>
+            <th data-field="email">email</th>
+            <th data-field="priority">priority</th>
+            <th data-field="category">category</th>
+            <th data-field="content">content</th>
+            <th data-field="progress">progress</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="item in tableData">
+            <td>{{item.id}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.priority}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.content}}</td>
+            <td >
+                <div class="custom-control custom-checkbox">
+                    <input class="form-check-input labeled" type="checkbox" v-model="item.progress" @click="send(item)">
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const app = new Vue(
+            {
+                el: '#app',
+                data() {
+                    return {
+                        tableData: [],
+                    }
+                },
+                methods: {
+                    send(item) {
+                        console.log(item.progress);
+                    }
+                },
+                async created() {
+                    console.log('test');
+                    let that = this;
+                    await $.getJSON('http://localhost:8080/api/db', function (data) {
+                        that.tableData = data;
+                        for (let x = 0; x < that.tableData.length; x++) {
+                            that.tableData[x].progress = parseInt(that.tableData[x].progress) ? true : false;
+                        }
+                    })
+                },
+            });
+    </script>
+</div>
+</body>
+</html>
