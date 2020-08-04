@@ -14,7 +14,7 @@ public class WebServerTutorialPageApplication {
     public static void main(String[] args) {
 
 		Flyway flyway = Flyway.configure().dataSource("jdbc:h2:file:./data/employees", "sa", null).load();
-//		flyway.clean();
+		flyway.clean();
 
         SpringApplication.run(WebServerTutorialPageApplication.class, args);
 

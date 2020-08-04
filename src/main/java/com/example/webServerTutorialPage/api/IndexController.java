@@ -1,17 +1,14 @@
 package com.example.webServerTutorialPage.api;
 
 import com.example.webServerTutorialPage.model.Feedback;
-import com.example.webServerTutorialPage.repository.FeedbackRepository;
 
 import com.example.webServerTutorialPage.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
 import java.io.File;
 
 
@@ -47,11 +44,10 @@ public class IndexController {
         return "nav_home";
     }
 
-    @GetMapping("/bootstrapTable")
-    public String bootstrapTable() {
-        return "bootstrapTable";
+    @GetMapping("api_resultTable")
+    public String api_resultTable() {
+        return "api_resultTable";
     }
-
 
     @GetMapping("/nav_feedback")
     public String nav_feedbackForm(Model model) {
