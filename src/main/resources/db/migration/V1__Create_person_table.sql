@@ -1,8 +1,3 @@
--- INSERT INTO TBL_FEEDBACK (email, priority, category, content) VALUES
---   ('abc@gmdsaail.com', 'te4sdast', 'tes3dsat', 'testdsa2');
---
-
-
 
 
 CREATE TABLE TBL_FEEDBACK(
@@ -11,5 +6,6 @@ CREATE TABLE TBL_FEEDBACK(
 priority VARCHAR(250) NOT NULL,
 category VARCHAR(250) NOT NULL,
 content VARCHAR(250) NOT NULL,
+filepath VARCHAR (250),
 progress TINYINT(1) NOT NULL
 );  

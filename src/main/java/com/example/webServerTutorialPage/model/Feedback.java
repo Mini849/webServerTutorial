@@ -1,7 +1,5 @@
 package com.example.webServerTutorialPage.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="TBL_FEEDBACK")
+@Table(name = "TBL_FEEDBACK")
 public class Feedback {
 
     @Id
@@ -31,7 +29,10 @@ public class Feedback {
     private String content;
 
     @Column(name = "progress")
-    private String progress;
+    private int progress;
+
+    @Column(name = "filepath")
+    private String filepath;
 
     public long getId() {
         return id;
@@ -53,7 +54,11 @@ public class Feedback {
         return content;
     }
 
-    public String getProgress() {
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public int getProgress() {
         return progress;
     }
 
@@ -77,8 +82,12 @@ public class Feedback {
         this.content = content;
     }
 
-    public void setProgress(String progress) {
+    public void setProgress(int progress) {
         this.progress = progress;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
     }
 
     @Override
@@ -89,7 +98,8 @@ public class Feedback {
                 ", priority='" + priority + '\'' +
                 ", category='" + category + '\'' +
                 ", content='" + content + '\'' +
-                ", progress='" + progress + '\'' +
+                ", progress=" + progress +
+                ", filepath='" + filepath + '\'' +
                 '}';
     }
 }

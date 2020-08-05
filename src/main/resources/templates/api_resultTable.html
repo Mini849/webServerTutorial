@@ -14,7 +14,7 @@
     <!--  <script th:src="@{https://cdn.jsdelivr.net/npm/vue}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!--    <script th:src="@{js/jquery.min.js}"></script>-->
-    <script th:src="@{https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
     <script th:src="@{js/bootstrap.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
 </head>
@@ -30,6 +30,7 @@
             <th data-field="priority">priority</th>
             <th data-field="category">category</th>
             <th data-field="content">content</th>
+            <th data-field="filepath">filepath</th>
             <th data-field="progress">progress</th>
         </tr>
         </thead>
@@ -41,6 +42,9 @@
             <td>{{item.priority}}</td>
             <td>{{item.category}}</td>
             <td>{{item.content}}</td>
+
+            <td><a :href="item.filepath" target="_blank">Download</a></td>
+
 
             <td>
                 <div class="custom-control custom-checkbox">
@@ -66,12 +70,13 @@
 
                         if (item.progress === true) {
                             item.progress = "0"
-                        } else if (item.progress === false)  {
+                        } else if (item.progress === false) {
                             item.progress = "1"
                         }
 
-                        axios.post('http://localhost:8080/api/saveFeedback',item)
-                            .catch(error => {});
+                        axios.post('http://localhost:8080/api/saveFeedback', item)
+                            .catch(error => {
+                            });
                         console.log(item.progress);
                     }
                 },
@@ -84,28 +89,28 @@
                             that.tableData[x].progress = parseInt(that.tableData[x].progress) ? true : false;
                         }
                     })
-                },
-                updateRecord: function (progress, id) {
-
-                    // Read value from Textbox
-                    var prigress = this.item[progress].name;
-                    var email = this.item[progress].email;
-
-                    if (name != '' && email != '') {
-                        axios.post('ajaxfile.php', {
-                            request: 3,
-                            id: id,
-                            name: name,
-                            email: email
-                        })
-                            .then(function (response) {
-                                alert(response.data);
-                            })
-                            .catch(function (error) {
-                                console.log(error);
-                            });
-                    }
                 }
+                // updateRecord: function (progress, id) {
+                //
+                //     // Read value from Textbox
+                //     var prigress = this.item[progress].name;
+                //     var email = this.item[progress].email;
+                //
+                //     if (name != '' && email != '') {
+                //         axios.post('ajaxfile.php', {
+                //             request: 3,
+                //             id: id,
+                //             name: name,
+                //             email: email
+                //         })
+                //             .then(function (response) {
+                //                 alert(response.data);
+                //             })
+                //             .catch(function (error) {
+                //                 console.log(error);
+                //             });
+                //     }
+                // }
             });
     </script>
 </div>

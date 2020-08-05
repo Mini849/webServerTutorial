@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.Objects;
 
 
 @Controller
@@ -60,16 +61,22 @@ public class IndexController {
 
         try {
 
-            String uploadDir = "C:\\Users\\amack\\Desktop\\uploads\\";
+            String uploadDir = "D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files";
 
-            File transferFile = new File(uploadDir + "/" + file.getOriginalFilename());
+            String filetype = "." + file.getContentType().split("/")[1];
+
+            File transferFile = new File(uploadDir + "/" + "pic" +  nav_feedback.getId() + filetype);
             file.transferTo(transferFile);
+
+            nav_feedback.setFilepath(transferFile.toString());
+
 
         } catch (Exception e) {
             e.printStackTrace();
             return "Failure with uploading the file, please try again.";
         }
 
+        nav_feedback.setProgress(0);
 
         System.out.println(nav_feedback);
         db.saveOrUpdate(nav_feedback);
