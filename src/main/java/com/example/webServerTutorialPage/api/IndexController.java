@@ -65,7 +65,7 @@ public class IndexController {
 
             String filetype = "." + file.getContentType().split("/")[1];
 
-            File transferFile = new File(uploadDir + "/" + "pic" +  nav_feedback.getId() + filetype);
+            File transferFile =  new File(uploadDir + "/" + "pic" +  nav_feedback.getId() + filetype);
             file.transferTo(transferFile);
 
             nav_feedback.setFilepath(transferFile.toString());

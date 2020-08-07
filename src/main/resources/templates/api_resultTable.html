@@ -67,18 +67,15 @@
                 },
                 methods: {
                     send(item) {
+                        let fart = {...item};
+                        fart.progress = item.progress ? "1" : "0";
 
-                        if (item.progress === true) {
-                            item.progress = "0"
-                        } else if (item.progress === false) {
-                            item.progress = "1"
-                        }
-
-                        axios.post('http://localhost:8080/api/saveFeedback', item)
+                        axios.post('http://localhost:8080/api/saveFeedback', fart)
                             .catch(error => {
                             });
-                        console.log(item.progress);
-                    }
+
+                        console.log(fart.progress);
+                    },
                 },
                 async created() {
                     console.log('test');
@@ -90,27 +87,7 @@
                         }
                     })
                 }
-                // updateRecord: function (progress, id) {
-                //
-                //     // Read value from Textbox
-                //     var prigress = this.item[progress].name;
-                //     var email = this.item[progress].email;
-                //
-                //     if (name != '' && email != '') {
-                //         axios.post('ajaxfile.php', {
-                //             request: 3,
-                //             id: id,
-                //             name: name,
-                //             email: email
-                //         })
-                //             .then(function (response) {
-                //                 alert(response.data);
-                //             })
-                //             .catch(function (error) {
-                //                 console.log(error);
-                //             });
-                //     }
-                // }
+
             });
     </script>
 </div>
