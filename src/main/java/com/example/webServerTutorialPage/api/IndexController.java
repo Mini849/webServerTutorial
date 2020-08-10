@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.util.Objects;
 
 
 @Controller
@@ -45,9 +44,9 @@ public class IndexController {
         return "nav_home";
     }
 
-    @GetMapping("api_resultTable")
-    public String api_resultTable() {
-        return "api_resultTable";
+    @GetMapping("/resultTable")
+    public String resultTable() {
+        return "resultTable";
     }
 
     @GetMapping("/nav_feedback")
@@ -55,6 +54,24 @@ public class IndexController {
         model.addAttribute("nav_feedback", new Feedback());
         return "nav_feedback";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
+    }
+
+    @PostMapping("/login")
+    public String loginPost(){
+        System.out.println("user logged in");
+        return "hello";
+    }
+
+
 
     @PostMapping("/nav_feedback")
     public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) {

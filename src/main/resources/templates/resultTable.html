@@ -6,16 +6,12 @@
 
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
     <link rel="stylesheet"
           th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
 
     <!-- Latest compiled and minified JavaScript -->
-    <!--  <script th:src="@{https://cdn.jsdelivr.net/npm/vue}"></script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!--    <script th:src="@{js/jquery.min.js}"></script>-->
     <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
-    <script th:src="@{js/bootstrap.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
 </head>
 
@@ -67,14 +63,14 @@
                 },
                 methods: {
                     send(item) {
-                        let fart = {...item};
-                        fart.progress = item.progress ? "1" : "0";
+                        let checkboxF = {...item};
+                        checkboxF.progress = item.progress ? "1" : "0";
 
-                        axios.post('http://localhost:8080/api/saveFeedback', fart)
+                        axios.post('http://localhost:8080/api/saveFeedback', checkboxF)
                             .catch(error => {
                             });
 
-                        console.log(fart.progress);
+                        console.log(checkboxF.progress);
                     },
                 },
                 async created() {
