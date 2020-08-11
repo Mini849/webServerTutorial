@@ -49,6 +49,11 @@ public class IndexController {
         return "resultTable";
     }
 
+    @GetMapping("/nav_base_inputs")
+    public String nav_base_inputs() {
+        return "nav_base_inputs";
+    }
+
     @GetMapping("/nav_feedback")
     public String nav_feedbackForm(Model model) {
         model.addAttribute("nav_feedback", new Feedback());
@@ -66,11 +71,10 @@ public class IndexController {
     }
 
     @PostMapping("/login")
-    public String loginPost(){
+    public String loginPost() {
         System.out.println("user logged in");
         return "hello";
     }
-
 
 
     @PostMapping("/nav_feedback")
@@ -82,7 +86,7 @@ public class IndexController {
 
             String filetype = "." + file.getContentType().split("/")[1];
 
-            File transferFile =  new File(uploadDir + "/" + "pic" +  nav_feedback.getId() + filetype);
+            File transferFile = new File(uploadDir + "/" + "pic" + nav_feedback.getId() + filetype);
             file.transferTo(transferFile);
 
             nav_feedback.setFilepath(transferFile.toString());

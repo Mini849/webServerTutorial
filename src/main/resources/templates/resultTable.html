@@ -25,30 +25,32 @@
             <th data-field="email">email</th>
             <th data-field="priority">priority</th>
             <th data-field="category">category</th>
-            <th data-field="content">content</th>
-            <th data-field="filepath">filepath</th>
+            <th data-field="filepath">pic</th>
             <th data-field="progress">progress</th>
         </tr>
         </thead>
         <tbody>
+        <template v-for="item in tableData">
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.priority}}</td>
+                <td>{{item.category}}</td>
+                <td><a :href="item.filepath" target="_blank">pic</a></td>
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input class="form-check-input labeled" type="checkbox" v-model="item.progress"
+                               @click="send(item)">
+                    </div>
+                </td>
 
-        <tr v-for="item in tableData">
-            <td>{{item.id}}</td>
-            <td>{{item.email}}</td>
-            <td>{{item.priority}}</td>
-            <td>{{item.category}}</td>
-            <td>{{item.content}}</td>
+            </tr>
 
-            <td><a :href="item.filepath" target="_blank">Download</a></td>
+            <tr>
+                <td colspan="5">{{item.content}}</td>
+            </tr>
+        </template>
 
-
-            <td>
-                <div class="custom-control custom-checkbox">
-                    <input class="form-check-input labeled" type="checkbox" v-model="item.progress" @click="send(item)">
-                </div>
-            </td>
-
-        </tr>
         </tbody>
     </table>
 

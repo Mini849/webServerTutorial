@@ -21,7 +21,6 @@ dependencies {
     //flyway
     implementation 'org.flywaydb:flyway-core'
 
-    // https://mvnrepository.com/artifact/org.webjars/bootstrap
     compile group: 'org.webjars', name: 'bootstrap', version: '4.1.0'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -29,18 +28,16 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.security:spring-security-test'
-//    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-//        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-//    }
+
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
     compile group: 'com.h2database', name: 'h2', version: '1.4.197'
-    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+
     implementation 'org.jetbrains:annotations:15.0'
 }
 
 flyway {
 
-//	url = 'jdbc:h2:mem:testdb'
     url = 'jdbc:h2:file:./data/employees;'
     user = 'sa'
     locations = [
