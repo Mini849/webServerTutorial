@@ -33,9 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
 
+//                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers( "/home", "/", "/login").permitAll()
-
+//                .antMatchers( "/home", "/", "/login").permitAll()
                 .antMatchers("/resultTable").authenticated()
                 .and()
                 .formLogin()
@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+
     }
 
     @Bean

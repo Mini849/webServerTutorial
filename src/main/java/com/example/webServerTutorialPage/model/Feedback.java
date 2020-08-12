@@ -34,6 +34,9 @@ public class Feedback {
     @Column(name = "filepath")
     private String filepath;
 
+    @Column(name = "date")
+    private String date;
+
     public long getId() {
         return id;
     }
@@ -90,6 +93,14 @@ public class Feedback {
         this.filepath = filepath;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Feedback{" +
@@ -100,6 +111,7 @@ public class Feedback {
                 ", content='" + content + '\'' +
                 ", progress=" + progress +
                 ", filepath='" + filepath + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }
