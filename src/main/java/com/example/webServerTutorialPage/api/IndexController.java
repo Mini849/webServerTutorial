@@ -15,6 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 
 @Controller
@@ -105,14 +108,10 @@ public class IndexController {
 
         }
 
+        nav_feedback.setProgress(false);
 
 
-
-
-        nav_feedback.setProgress(0);
-
-
-        nav_feedback.setDate(function.getTimestampWithGMT);
+        nav_feedback.setDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_DATE_TIME));
 
         System.out.println(nav_feedback);
         db.saveOrUpdate(nav_feedback);

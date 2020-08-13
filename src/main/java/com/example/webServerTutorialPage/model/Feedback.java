@@ -29,7 +29,7 @@ public class Feedback {
     private String content;
 
     @Column(name = "progress")
-    private int progress;
+    private boolean progress;
 
     @Column(name = "filepath")
     private String filepath;
@@ -61,7 +61,7 @@ public class Feedback {
         return filepath;
     }
 
-    public int getProgress() {
+    public boolean getProgress() {
         return progress;
     }
 
@@ -85,7 +85,7 @@ public class Feedback {
         this.content = content;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(boolean progress) {
         this.progress = progress;
     }
 

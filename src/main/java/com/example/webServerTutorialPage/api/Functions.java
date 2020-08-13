@@ -12,12 +12,13 @@ import java.util.TimeZone;
 
 public class Functions {
 
-    public String getTimestampWithGMT;
 
-    private static String getTimestampWithGMT() {
+
+    public String getTimestampWithGMT() {
         long timestamp = System.currentTimeMillis() / 1000;
         int offset = (TimeZone.getDefault().getRawOffset() + TimeZone.getDefault().getDSTSavings()) / 1000;
 
+        System.out.println(timestamp + offset);
         return String.valueOf(timestamp + offset);
     }
 
@@ -25,10 +26,10 @@ public class Functions {
 
         String filetype = "." + Objects.requireNonNull(file.getContentType()).split("/")[1];
 
-        String truePath = path + "/" + "pic" + nav_feedback.getId() + filetype;
 
-        file.transferTo(Paths.get(truePath));
-        return (truePath);
+
+        file.transferTo(Paths.get(path + "/" + "pic" + nav_feedback.getId() + filetype));
+        return ("/files/" + "pic" + nav_feedback.getId() + filetype);
     }
 
 }

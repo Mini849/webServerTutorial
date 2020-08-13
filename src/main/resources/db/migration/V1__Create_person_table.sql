@@ -6,6 +6,6 @@ CREATE TABLE TBL_FEEDBACK
     category VARCHAR(250) NOT NULL,
     content  VARCHAR(250) NOT NULL,
     filepath VARCHAR(250),
-    progress TINYINT(1)   NOT NULL,
-    date TIMESTAMP WITH TIME ZONE
+    progress BOOLEAN NOT NULL,
+    date TIMESTAMP
 );  
