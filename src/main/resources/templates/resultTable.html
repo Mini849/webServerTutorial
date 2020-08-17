@@ -58,30 +58,7 @@
         </tbody>
     </table>
 
-    <input type="text" value="" v-model="search" placeholder="Search">
 
-    <table style="text-align: center;">
-        <thead>
-        <tr>
-            <th v-for="column in columns">
-                <a
-                        href="#"
-                        v-on:click="sort(column.shortcode)">{{column.label}}
-                </a>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(product) in products">
-            <td>{{product.pn}}</td>
-            <td>{{product.od}}</td>
-            <td>{{product.id}}</td>
-            <td>{{product.thickness}}</td>
-            <td>{{product.lo}}</td>
-            <td>{{product.weight}}</td>
-        </tr>
-        </tbody>
-    </table>
 </div>
 </body>
 </html>
