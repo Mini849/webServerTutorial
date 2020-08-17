@@ -10,13 +10,15 @@
           th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
 
     <!-- Latest compiled and minified JavaScript -->
+
+    <script type="text/javascript" th:src="@{/js/tableJS.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
 </head>
 
 
-<body>
+<body class="my-auto">
 <div layout:fragment="content" id="app">
     <table class="table" id="table" v-if="tableData.length">
         <thead>
@@ -26,6 +28,7 @@
             <th data-field="priority">priority</th>
             <th data-field="category">category</th>
             <th data-field="filepath">pic</th>
+            <th data-field="date">date</th>
             <th data-field="progress">progress</th>
         </tr>
         </thead>
@@ -37,6 +40,7 @@
                 <td>{{item.priority}}</td>
                 <td>{{item.category}}</td>
                 <td><a :href="item.filepath" target="_blank">pic</a></td>
+                <td>{{item.date}}</td>
                 <td>
                     <div class="custom-control custom-checkbox">
                         <input class="form-check-input labeled" type="checkbox" v-model="item.progress"
@@ -54,40 +58,30 @@
         </tbody>
     </table>
 
-    <script>
-        const app = new Vue(
-            {
-                el: '#app',
-                data() {
-                    return {
-                        tableData: [],
-                    }
-                },
-                methods: {
-                    send(item) {
-                        let checkboxF = {...item};
-                        checkboxF.progress = item.progress ? "1" : "0";
+    <input type="text" value="" v-model="search" placeholder="Search">
 
-                        axios.post('http://localhost:8080/api/saveFeedback', checkboxF)
-                            .catch(error => {
-                            });
-
-                        console.log(checkboxF.progress);
-                    },
-                },
-                async created() {
-                    console.log('test');
-                    let that = this;
-                    await $.getJSON('http://localhost:8080/api/db', function (data) {
-                        that.tableData = data;
-                        for (let x = 0; x < that.tableData.length; x++) {
-                            that.tableData[x].progress = parseInt(that.tableData[x].progress) ? true : false;
-                        }
-                    })
-                }
-
-            });
-    </script>
+    <table style="text-align: center;">
+        <thead>
+        <tr>
+            <th v-for="column in columns">
+                <a
+                        href="#"
+                        v-on:click="sort(column.shortcode)">{{column.label}}
+                </a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(product) in products">
+            <td>{{product.pn}}</td>
+            <td>{{product.od}}</td>
+            <td>{{product.id}}</td>
+            <td>{{product.thickness}}</td>
+            <td>{{product.lo}}</td>
+            <td>{{product.weight}}</td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

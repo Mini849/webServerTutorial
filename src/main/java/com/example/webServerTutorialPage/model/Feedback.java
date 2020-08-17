@@ -29,10 +29,13 @@ public class Feedback {
     private String content;
 
     @Column(name = "progress")
-    private int progress;
+    private boolean progress;
 
     @Column(name = "filepath")
     private String filepath;
+
+    @Column(name = "date")
+    private String date;
 
     public long getId() {
         return id;
@@ -58,7 +61,7 @@ public class Feedback {
         return filepath;
     }
 
-    public int getProgress() {
+    public boolean getProgress() {
         return progress;
     }
 
@@ -82,12 +85,20 @@ public class Feedback {
         this.content = content;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(boolean progress) {
         this.progress = progress;
     }
 
     public void setFilepath(String filepath) {
         this.filepath = filepath;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -100,6 +111,7 @@ public class Feedback {
                 ", content='" + content + '\'' +
                 ", progress=" + progress +
                 ", filepath='" + filepath + '\'' +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

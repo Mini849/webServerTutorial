@@ -15,6 +15,7 @@
     --l_RedOrient: #ab0c21;
     --l_OrangeRed: #ec6600;
     --white: #ffffff;
+    --maxWidth: 720px;
 }
 
 @font-face {
@@ -36,10 +37,17 @@ body {
     background-color: var(--l_BlueCornflower);
 }
 
+/*layout start*/
+
 .navbar {
-    box-shadow: 2px 2px 4px rgb(113, 113, 113)
+    box-shadow: 2px 2px 4px rgb(113, 113, 113);
 }
 
+.container.abc {
+    max-width: var(--maxWidth);
+}
+
+/*layout end*/
 
 
 /*login start*/
@@ -101,6 +109,7 @@ body {
 }
 
 /*login end*/
+
 
 
 

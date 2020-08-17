@@ -4,12 +4,20 @@ import com.example.webServerTutorialPage.model.Feedback;
 
 import com.example.webServerTutorialPage.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 
 @Controller
@@ -80,28 +88,43 @@ public class IndexController {
     @PostMapping("/nav_feedback")
     public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) {
 
-        try {
+        Functions function = new Functions();
+        String uploadDir = "D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files";
+        String uploadDirLocalPC = "E:\\GitHub\\site\\src\\main\\resources\\files";
 
-            String uploadDir = "D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files";
+        if (!file.isEmpty()) {
 
-            String filetype = "." + file.getContentType().split("/")[1];
+            try {
+                nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir));
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
 
-            File transferFile = new File(uploadDir + "/" + "pic" + nav_feedback.getId() + filetype);
-            file.transferTo(transferFile);
+            try {
+                nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDirLocalPC));
+            } catch (Exception e) {
+//                e.printStackTrace();
+            }
 
-            nav_feedback.setFilepath(transferFile.toString());
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Failure with uploading the file, please try again.";
         }
 
-        nav_feedback.setProgress(0);
+        nav_feedback.setProgress(false);
+
+
+        nav_feedback.setDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_DATE_TIME));
 
         System.out.println(nav_feedback);
         db.saveOrUpdate(nav_feedback);
         return "nav_feedback_result";
+    }
+
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
+        Resource file = new FileSystemResource("E:\\GitHub\\site\\src\\main\\resources\\files\\" + filename);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
 }

@@ -1,2 +1,2 @@
-INSERT INTO TBL_FEEDBACK (email, priority, category, content, filepath,  progress) VALUES
-  ('abc@gmdsadsaail.com', 'tedsa4sdast', 'tes3ddsasat', 'tedsastdsa2', 'D:\GitProjects\webServerTutorialPage\src\main\resources\files\pic0.jpeg',  false);
+INSERT INTO TBL_FEEDBACK (email, priority, category, content, filepath,  progress, DATE) VALUES
+  ('abc@gmdsadsaail.com', 'tedsa4sdast', 'tes3ddsasat', 'tedsastdsa2', 'D:\GitProjects\webServerTutorialPage\src\main\resources\files\pic0.jpeg',  true, '2005-12-31 23:59:59');
