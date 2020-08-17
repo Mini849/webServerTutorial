@@ -33,11 +33,11 @@
         </tr>
         </thead>
         <tbody>
-        <template v-for="item in tableData">
-            <tr>
+        <template v-for="item in sortedTableData">
+            <tr :key="item.id" :class="item.progress ? 'table-active' : ''">
                 <td>{{item.id}}</td>
                 <td>{{item.email}}</td>
-                <td>{{item.priority}}</td>
+                <td :class="priorityClass(item)">{{item.priority}}</td>
                 <td>{{item.category}}</td>
                 <td><a :href="item.filepath" target="_blank">pic</a></td>
                 <td>{{item.date}}</td>
@@ -50,8 +50,8 @@
 
             </tr>
 
-            <tr>
-                <td colspan="5">{{item.content}}</td>
+            <tr :class="item.progress ? 'table-active' : ''">
+                <td colspan="7">{{item.content}}</td>
             </tr>
         </template>
 

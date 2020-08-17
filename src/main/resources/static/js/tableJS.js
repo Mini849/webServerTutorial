@@ -12,8 +12,16 @@ window.onload = function () {
                     tableData: []
                 }
             },
+            computed: {
+                sortedTableData() {
+                    return [...this.tableData].sort((a, b) => {
+                        return a.progress ? 1 : -1
+                    })
+                }
+            },
             methods: {
                 send(item) {
+                    // item.progress = !item.progress
                     let checkboxF = {...item};
                     if (item.progress === true) {
                         checkboxF.progress = false;
@@ -25,6 +33,13 @@ window.onload = function () {
                         });
                     console.log(checkboxF.progress);
                 },
+                priorityClass(item) {
+                    if (item.priority === "1") {
+                        return 'text-danger'
+                    }
+
+                    return 'text-success'
+                }
             },
             async created() {
                 console.log('test');
