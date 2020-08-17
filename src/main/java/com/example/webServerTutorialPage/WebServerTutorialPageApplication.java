@@ -17,11 +17,5 @@ public class WebServerTutorialPageApplication {
 		flyway.clean();
 
         SpringApplication.run(WebServerTutorialPageApplication.class, args);
-
-
-
     }
-
-
-
 }
