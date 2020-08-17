@@ -131,3 +131,12 @@ select feedback0_.id as id1_0_, feedback0_.category as category2_0_, feedback0_.
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2020-08-11 18:54:19 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "CONTENT VARCHAR(250) NOT NULL": "STRINGDECODE('                    <p> loremLorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci dolor... (5524)"; SQL statement:
+insert into tbl_feedback (id, category, content, email, filepath, priority, progress) values (null, ?, ?, ?, ?, ?, ?) [22001-197]
+2020-08-11 18:54:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "CONTENT VARCHAR(250) NOT NULL": "STRINGDECODE('                    <p> loremLorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci dolor... (680)"; SQL statement:
+insert into tbl_feedback (id, category, content, email, filepath, priority, progress) values (null, ?, ?, ?, ?, ?, ?) [22001-197]
+2020-08-11 18:54:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Value too long for column "CONTENT VARCHAR(250) NOT NULL": "STRINGDECODE('lremLorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, adipisci dolorum ea expedita minima opt... (655)"; SQL statement:
+insert into tbl_feedback (id, category, content, email, filepath, priority, progress) values (null, ?, ?, ?, ?, ?, ?) [22001-197]
