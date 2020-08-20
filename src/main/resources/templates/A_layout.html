@@ -18,14 +18,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <!--Css-->
-<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
     <link th:href="@{/css/main-site-style.css}" href="../static/css/main-site-style.css" rel="stylesheet" type="text/css"/>
     <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
     <!--js-->
-    <script th:src="@{/js/mainPage.js}" type="text/javascript"></script>
     <meta name="csrf" th:content="${_csrf.token}"/>
     <meta name="csrf_header" th:content="${_csrf.headerName}"/>
 </head>
@@ -85,10 +83,6 @@
         </section>
     </div>
     </section>
-
-
 </body>
-
 </html>
-
 <script src="../js/mainPage.js"></script>

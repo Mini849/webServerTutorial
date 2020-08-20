@@ -21,7 +21,6 @@ window.onload = function () {
             },
             methods: {
                 send(item) {
-                    // item.progress = !item.progress
                     let checkboxF = {...item};
                     if (item.progress === true) {
                         checkboxF.progress = false;
@@ -34,11 +33,16 @@ window.onload = function () {
                     console.log(checkboxF.progress);
                 },
                 priorityClass(item) {
-                    if (item.priority === "1") {
-                        return 'text-danger'
+                    switch (item.priority) {
+                        case "high":
+                            return 'text-danger'
+                        case "medium":
+                            return 'text-warning'
+                        case "low":
+                            return 'text-primary'
+                        case "very-low":
+                            return 'text-success'
                     }
-
-                    return 'text-success'
                 }
             },
             async created() {

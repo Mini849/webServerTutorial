@@ -11,11 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-
-
 // done mostly by this https://spring.io/guides/gs/securing-web/
-
-
 
 @Configuration
 @EnableWebSecurity
@@ -32,10 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-
-//                .csrf().disable()
                 .authorizeRequests()
-//                .antMatchers( "/home", "/", "/login").permitAll()
                 .antMatchers("/resultTable").authenticated()
                 .and()
                 .formLogin()
@@ -44,7 +37,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
-
     }
 
     @Bean

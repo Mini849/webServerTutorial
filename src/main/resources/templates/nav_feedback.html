@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{A_layout}">
 <head>
     <title>About us</title>
 </head>
@@ -27,9 +27,10 @@
                     <div class="input-group">
                         <select class="form-control" th:field="*{priority}" id="validationServerPriority" required>
                             <option value="">Select priority</option>
-                            <option th:value="1" th:text="low"></option>
-                            <option th:value="2" th:text="normal"></option>
-                            <option th:value="3" th:text="high"></option>
+                            <option th:value="very-low" th:text="very-low"></option>
+                            <option th:value="low" th:text="low"></option>
+                            <option th:value="normal" th:text="normal"></option>
+                            <option th:value="high" th:text="high"></option>
                         </select>
                         <div class="invalid-feedback">
                             Please choose a the category.
