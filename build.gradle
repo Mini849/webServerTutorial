@@ -49,4 +49,7 @@ flyway {
 test {
     useJUnitPlatform()
 }
-	
+
+springBoot {
+    buildInfo()
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{A_layout}">
+
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script type="text/javascript" th:src="@{/js/tableJS.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
+</head>
+
+
+<body class="my-auto">
+<div layout:fragment="content" id="app">
+    <table class="table" id="table" v-if="tableData.length">
+        <thead>
+        <tr>
+            <th data-field="id">Item ID</th>
+            <th data-field="email">email</th>
+            <th data-field="priority">priority</th>
+            <th data-field="category">category</th>
+            <th data-field="filepath">pic</th>
+            <th data-field="date">date</th>
+            <th data-field="progress">progress</th>
+        </tr>
+        </thead>
+        <tbody>
+        <template v-for="item in sortedTableData">
+            <tr :key="item.id" :class="item.progress ? 'table-active' : ''">
+                <td>{{item.id}}</td>
+                <td>{{item.email}}</td>
+                <td :class="priorityClass(item)">{{item.priority}}</td>
+                <td>{{item.category}}</td>
+                <td><a :href="item.filepath" target="_blank">pic</a></td>
+                <td>{{item.date}}</td>
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input class="form-check-input labeled" type="checkbox" v-model="item.progress"
+                               @click="send(item)">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr :class="item.progress ? 'table-active' : ''">
+                <td colspan="7">{{item.content}}</td>
+            </tr>
+        </template>
+
+        </tbody>
+    </table>
+
+
+</div>
+</body>
+</html>

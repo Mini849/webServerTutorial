@@ -25,10 +25,19 @@ public class RequestController {
     @Autowired
     FeedbackService db;
 
+    String uploadDir = "D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files";
+    String uploadDirLocalPC = "E:\\GitHub\\site\\src\\main\\resources\\files";
+    String uploadServer = "\\indplatform\\rampup\\db\\files";
+
     @GetMapping("/nav_feedback")
     public String nav_feedbackForm(Model model) {
         model.addAttribute("nav_feedback", new Feedback());
         return "nav_feedback";
+    }
+
+    @GetMapping("/login")
+    public String loginGet() {
+        return "login";
     }
 
     @PostMapping("/login")
@@ -41,8 +50,8 @@ public class RequestController {
     public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) {
 
         Functions function = new Functions();
-        String uploadDir = "D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files";
-        String uploadDirLocalPC = "E:\\GitHub\\site\\src\\main\\resources\\files";
+
+
 
         if (!file.isEmpty()) {
 
@@ -54,6 +63,12 @@ public class RequestController {
             try {
                 nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDirLocalPC));
             } catch (Exception e) {
+            }
+
+            try {
+                nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadServer));
+            } catch (Exception e) {
+
             }
         }
 
@@ -70,9 +85,8 @@ public class RequestController {
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 
-        Resource file = new FileSystemResource("D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files\\" + filename);
+        Resource file = new FileSystemResource(uploadServer + filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
-
 }

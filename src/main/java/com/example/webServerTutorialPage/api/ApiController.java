@@ -3,6 +3,7 @@ package com.example.webServerTutorialPage.api;
 import com.example.webServerTutorialPage.model.Feedback;
 import com.example.webServerTutorialPage.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,9 @@ public class ApiController {
 
     @Autowired
     FeedbackService feedbackService;
+
+    @Autowired
+    BuildProperties buildProperties;
 
     @GetMapping("/feedback/{id}")
     private Feedback getFeedback(long id) {
@@ -26,6 +30,9 @@ public class ApiController {
 
     @GetMapping("/db")
     private List<Feedback> getAllFeedbacks() {
+
+        System.out.println("Build version:" + buildProperties.getVersion());
+
         return feedbackService.getAllFeedbacks();
     }
 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{A_layout}">
+<head>
+    <title>About us</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+
+    <div style="height: 20px"></div>
+
+    <div class="container">
+
+        <form action="" th:action="@{/nav_feedback}" th:object="${nav_feedback}" method="post" enctype="multipart/form-data">
+
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer01">Email</label>
+                    <input type="text" class="form-control" id="validationServer01" placeholder="First name" th:field="*{email}"
+                           required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServerPriority">Priority</label>
+                    <div class="input-group">
+                        <select class="form-control" th:field="*{priority}" id="validationServerPriority" required>
+                            <option value="">Select priority</option>
+                            <option th:value="very-low" th:text="very-low"></option>
+                            <option th:value="low" th:text="low"></option>
+                            <option th:value="normal" th:text="normal"></option>
+                            <option th:value="high" th:text="high"></option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please choose a the category.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="validationServerUsername">Category</label>
+                    <div class="input-group">
+                        <select class="form-control" th:field="*{category}" id="validationServerUsername" required>
+
+                            <option value="">Select Category</option>
+                            <option th:value="BaseInputs" th:text="BaseInputs"></option>
+                            <option th:value="DPCPS" th:text="DPCPS"></option>
+                            <option th:value="IPCPS" th:text="IPCPS"></option>
+                            <option th:value="IPCCF" th:text="IPCCF"></option>
+                            <option th:value="OPRC" th:text="OPRC"></option>
+                            <option th:value="MCFTH" th:text="MCFTH"></option>
+                            <option th:value="SCRAP" th:text="SCRAP"></option>
+                            <option th:value="PC" th:text="PC"></option>
+                            <option th:value="TS" th:text="TS"></option>
+                            <option th:value="PVC" th:text="PVC"></option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Please choose a the category.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Write your feedack here</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"
+                          th:field="*{content}"></textarea>
+            </div>
+
+<!--            <form method="POST" action="/upload" enctype="multipart/form-data">-->
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="fileFormControl" name="file">
+            </div>
+<!--            </form>-->
+
+            <button class="btn btn-primary" type="submit">Submit form</button>
+
+        </form>
+
+    </div>
+    <div style="height: 20px"></div>
+</div>
+</body>
+</html>
