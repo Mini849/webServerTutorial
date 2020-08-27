@@ -1,10 +1,10 @@
-package com.example.webServerTutorialPage.service;
+package com.web.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.webServerTutorialPage.model.Feedback;
-import com.example.webServerTutorialPage.repository.FeedbackRepository;
+import com.web.model.Feedback;
+import com.web.repository.FeedbackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

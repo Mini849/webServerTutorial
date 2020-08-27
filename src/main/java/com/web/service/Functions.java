@@ -1,12 +1,11 @@
-package com.example.webServerTutorialPage.service;
+package com.web.service;
 
-import com.example.webServerTutorialPage.model.Feedback;
+import com.web.model.Feedback;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.Objects;
-import java.util.TimeZone;
 
 public class Functions {
 

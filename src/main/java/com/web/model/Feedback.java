@@ -1,4 +1,4 @@
-package com.example.webServerTutorialPage.model;
+package com.web.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,7 +1,7 @@
-package com.example.webServerTutorialPage.api;
+package com.web.api;
 
-import com.example.webServerTutorialPage.model.Feedback;
-import com.example.webServerTutorialPage.service.FeedbackService;
+import com.web.model.Feedback;
+import com.web.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.*;

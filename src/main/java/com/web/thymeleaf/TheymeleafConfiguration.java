@@ -1,4 +1,4 @@
-package com.example.webServerTutorialPage.thymeleaf;
+package com.web.thymeleaf;
 
 import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.beans.factory.annotation.Configurable;

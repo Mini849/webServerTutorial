@@ -1,4 +1,4 @@
-package com.example.webServerTutorialPage.exeption;
+package com.web.exeption;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 

@@ -1,9 +1,9 @@
-package com.example.webServerTutorialPage.api;
+package com.web.api;
 
-import com.example.webServerTutorialPage.model.Feedback;
+import com.web.model.Feedback;
 
-import com.example.webServerTutorialPage.service.FeedbackService;
-import com.example.webServerTutorialPage.service.Functions;
+import com.web.service.FeedbackService;
+import com.web.service.Functions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;

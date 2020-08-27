@@ -1,6 +1,6 @@
-package com.example.webServerTutorialPage.repository;
+package com.web.repository;
 
-import com.example.webServerTutorialPage.model.Feedback;
+import com.web.model.Feedback;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
