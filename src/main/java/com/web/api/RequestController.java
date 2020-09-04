@@ -5,6 +5,7 @@ import com.web.model.Feedback;
 import com.web.service.FeedbackService;
 import com.web.service.Functions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -25,9 +27,9 @@ public class RequestController {
     @Autowired
     FeedbackService db;
 
-    String uploadDir = "D:\\GitProjects\\webServerTutorialPage\\src\\main\\resources\\files";
-    String uploadDirLocalPC = "E:\\GitHub\\site\\src\\main\\resources\\files";
-    String uploadServer = "\\indplatform\\rampup\\db\\files";
+    @Value("${fileStorage.path}")
+    public String uploadDir;
+
 
     @GetMapping("/nav_feedback")
     public String nav_feedbackForm(Model model) {
@@ -47,35 +49,16 @@ public class RequestController {
     }
 
     @PostMapping("/nav_feedback")
-    public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) {
+    public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) throws IOException {
 
         Functions function = new Functions();
-
-
-
         if (!file.isEmpty()) {
-
-            try {
-                nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir));
-            } catch (Exception e) {
-            }
-
-            try {
-                nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDirLocalPC));
-            } catch (Exception e) {
-            }
-
-            try {
-                nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadServer));
-            } catch (Exception e) {
-
-            }
+            nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir));
         }
 
+
         nav_feedback.setProgress(false);
-
         nav_feedback.setDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_DATE_TIME));
-
         System.out.println(nav_feedback);
         db.saveOrUpdate(nav_feedback);
         return "nav_feedback_result";
@@ -84,8 +67,7 @@ public class RequestController {
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
-        Resource file = new FileSystemResource(uploadServer + filename);
+        Resource file = new FileSystemResource(uploadDir + filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }

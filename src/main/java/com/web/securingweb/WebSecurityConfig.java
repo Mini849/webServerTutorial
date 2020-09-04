@@ -1,5 +1,6 @@
 package com.web.securingweb;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -13,7 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
+import javax.servlet.http.HttpServletRequest;
 
 // done mostly by this https://spring.io/guides/gs/securing-web/
 
@@ -21,12 +24,20 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Value("${server.port}")
+    public int port;
+
+    @Value("${admin.name}")
+    public String name;
+
+    @Value("${admin.pass}")
+    public String pass;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/resources/**", "/static/**", "/logos/**" ,  "/css/**", "/js/**", "/img/**", "/icon/**");
+                .antMatchers("/resources/**", "/static/**", "/logos/**", "/css/**", "/js/**", "/img/**", "/icon/**");
     }
 
     @Override
@@ -41,6 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .and()
+//                .portMapper().http(8080).mapsTo(port).http(8080).mapsTo(port);
                 .logout()
                 .permitAll();
 
@@ -56,9 +68,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .roles("USER");
     }
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
+
 }
