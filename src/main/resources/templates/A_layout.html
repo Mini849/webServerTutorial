@@ -88,7 +88,7 @@
                 </ul>
             </div>
 
-        <div class="DarkMod-TODO"></div>
+        <div class="DarkMod-TODO d-block-sm d-lg-block d-md-small d-none d-xl-block"></div>
 
         </nav>
 
@@ -114,7 +114,12 @@
 
 <!-- Menu Toggle Script -->
 <script>
-    console.log($('.collapse'));
+    $('.navbar-toggler').on('show.bs.collapse', function () {
+        console.log("I'm here")
+    })
+    $('.navbar-toggler').on('hide.bs.collapse', function () {
+        console.log("I'm gone")
+    })
 
 
     $("#menu-toggle").click(function(e) {
