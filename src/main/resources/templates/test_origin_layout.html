@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <!--https://www.w3schools.com/-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--JQuery-->
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!--Boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--Css-->
+    <link th:href="@{/css/main-site-style.css}" href="../static/css/main-site-style.css" rel="stylesheet" type="text/css"/>
+    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--js-->
+    <meta name="csrf" th:content="${_csrf.token}"/>
+    <meta name="csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+
+<body  style="background: #ededed">
+
+
+
+<header class="section-header py-4 bg-light">
+    <div class="container">
+        <img src="logos/leoni-Logo.png" height="30dp" >
+    </div>
+</header> <!-- section-header.// -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-primary">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav">
+                <li class="nav-item active"> <a class="nav-link" th:href="@{/nav_home}"> Home </a> </li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/nav_download}"> Downloads </a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/resultTable}"> Result Table </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">  Quick guide  </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">  FFG  </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> Base Inputs</a></li>
+                        <li><a class="dropdown-item" href="#"> DPC </a></li>
+                        <li><a class="dropdown-item" href="#"> IPCSPCSPPSP </a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/nav_feedback}"> Feedback </a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/nav_about}"> About </a></li>
+            </ul>
+        </div> <!-- navbar-collapse.// -->
+    </div><!-- container //  -->
+</nav>
+
+
+<section class="section-content ">
+    <div class="container abc">
+        <section class="my-5" style="background-color: white" layout:fragment="content">
+            <p>This is filled by the content template.</p>
+        </section>
+    </div>
+</section>
+
+
+
+
+</body>
+</html>
+<script src="../js/mainPage.js"></script>
