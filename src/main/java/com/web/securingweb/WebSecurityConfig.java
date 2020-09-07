@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-
+                .requiresChannel().anyRequest().requiresInsecure().and()
                 .authorizeRequests()
                 .antMatchers("/resultTable").authenticated()
                 .and()
@@ -52,7 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .and()
-//                .portMapper().http(8080).mapsTo(port).http(8080).mapsTo(port);
+//                .portMapper().http(8080).mapsTo(port)
+//                .and()
                 .logout()
                 .permitAll();
 
