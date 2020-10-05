@@ -21,17 +21,23 @@ public class Functions {
     @Value("${admin.pass}")
     public String pass;
 
-    @Value("${mini.ip}")
-    public String ip;
+    @Value("${OS}")
+    String os;
 
+    Object backlash;
 
     public String saveFile(MultipartFile file, Feedback nav_feedback, String path) throws IOException {
 
-        String filetype = "." + Objects.requireNonNull(file.getContentType()).split("/")[1];
+        String filetype = "." + Objects.requireNonNull(file.getContentType()).split("/")[1]; //don't change it you stupid, tis good
 
-        file.transferTo(Paths.get(path + "/" + "pic" + nav_feedback.getId() + filetype));
-        return ("/files/" + "pic" + nav_feedback.getId() + filetype);
+
+        file.transferTo(Paths.get(path + backlash + "pic" + nav_feedback.getId() + filetype));
+        return (backlash + "files" + backlash + "pic" + nav_feedback.getId() + filetype);
     }
+
+
+
+
 
     public int getPort() {
         return port;
@@ -45,7 +51,5 @@ public class Functions {
         return pass;
     }
 
-    public String getIp() {
-        return ip;
-    }
+
 }

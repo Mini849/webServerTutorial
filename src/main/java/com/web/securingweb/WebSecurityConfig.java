@@ -44,16 +44,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .requiresChannel().anyRequest().requiresInsecure().and()
                 .authorizeRequests()
-                .antMatchers("/resultTable").authenticated()
+                .antMatchers("/resultTable", "/history").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
                 .and()
-//                .portMapper().http(8080).mapsTo(port)
-//                .and()
                 .logout()
                 .permitAll();
 

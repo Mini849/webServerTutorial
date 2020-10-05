@@ -27,7 +27,7 @@ window.onload = function () {
                     } else if (item.progress === false) {
                         checkboxF.progress = true;
                     }
-                    axios.post('http://localhost:8080/api/saveFeedback', checkboxF)
+                    axios.post('http://localhost:9000/api/saveFeedback', checkboxF)
                         .catch(error => {
                         });
                     console.log(checkboxF.progress);
@@ -48,7 +48,7 @@ window.onload = function () {
             async created() {
                 console.log('test');
                 let that = this;
-                await $.getJSON('http://localhost:8080/api/db', function (data) {
+                await $.getJSON('http://localhost:9000/api/db', function (data) {
                     that.tableData = data;
                 })
             }

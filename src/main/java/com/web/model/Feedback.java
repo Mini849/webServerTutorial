@@ -36,56 +36,59 @@ public class Feedback {
     @Column(name = "date")
     private String date;
 
+    @Column(name = "position")
+    private String position;
+
     public long getId() {
         return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPriority() {
-        return priority;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getFilepath() {
-        return filepath;
-    }
-
-    public boolean getProgress() {
-        return progress;
     }
 
     public void setId(long id) {
         this.id = id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPriority() {
+        return priority;
     }
 
     public void setPriority(String priority) {
         this.priority = priority;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
+    public boolean isProgress() {
+        return progress;
+    }
+
     public void setProgress(boolean progress) {
         this.progress = progress;
+    }
+
+    public String getFilepath() {
+        return filepath;
     }
 
     public void setFilepath(String filepath) {
@@ -100,6 +103,14 @@ public class Feedback {
         this.date = date;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return "Feedback{" +
@@ -111,6 +122,7 @@ public class Feedback {
                 ", progress=" + progress +
                 ", filepath='" + filepath + '\'' +
                 ", date='" + date + '\'' +
+                ", position='" + position + '\'' +
                 '}';
     }
 }

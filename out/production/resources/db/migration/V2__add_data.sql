@@ -1,2 +1,2 @@
 INSERT INTO TBL_FEEDBACK (email, priority, category, content, filepath,  progress, date) VALUES
-  ('abc@gmdsaail.com', 'normal', 'BaseInputs', 'The Last of Part II is a very powerful and moving narrative that fully immerses you into the story of Ellie and the world around her. In terms of gameplay, it is a flawless experience on the PlayStation 4 and together, The Last of Us Part II is easily one of the best games in a long-time.', 'http://localhost:8080/files/pic0.jpeg' ,  false, '2005-12-31 23:59:59');
+  ('abc@gmdsaail.com', 'normal', 'BaseInputs', 'Th', 'http://localhost:9000/files/pic0.jpeg' ,  false, '2005-12-31 23:59:59');

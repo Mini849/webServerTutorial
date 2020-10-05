@@ -11,7 +11,6 @@
 
     <!-- Latest compiled and minified JavaScript -->
 
-    <script type="text/javascript" th:src="@{/js/tableJS.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
@@ -20,25 +19,32 @@
 
 <body class="my-auto">
 <div layout:fragment="content" id="app">
+
+    <div class="d-flex  justify-content-end " style="padding-bottom: 5px">
+        <a th:href="@{/history}" class="btn">History</a>
+    </div>
+
     <table class="table" id="table" v-if="tableData.length">
         <thead>
-        <tr>
+        <tr style="background: white">
             <th data-field="id">Item ID</th>
             <th data-field="email">email</th>
             <th data-field="priority">priority</th>
             <th data-field="category">category</th>
+            <th data-field="position">position</th>
             <th data-field="filepath">pic</th>
             <th data-field="date">date</th>
             <th data-field="progress">progress</th>
         </tr>
         </thead>
         <tbody>
-        <template v-for="item in sortedTableData">
-            <tr :key="item.id" :class="item.progress ? 'table-active' : ''">
+        <template v-for="item in notFalse">
+            <tr :key="item.id" :class="item.progress">
                 <td>{{item.id}}</td>
                 <td>{{item.email}}</td>
                 <td :class="priorityClass(item)">{{item.priority}}</td>
                 <td>{{item.category}}</td>
+                <td>{{item.position}}</td>
                 <td><a :href="item.filepath" target="_blank">pic</a></td>
                 <td>{{item.date}}</td>
                 <td>
@@ -50,14 +56,77 @@
 
             </tr>
 
-            <tr :class="item.progress ? 'table-active' : ''">
-                <td colspan="7">{{item.content}}</td>
+            <tr :class="item.progress">
+                <td colspan="8  ">{{item.content}}</td>
             </tr>
         </template>
 
         </tbody>
     </table>
+<script>
+    document.documentElement.style
+        .setProperty('--maxWidth', '1120px');
+    axios.defaults.headers.common[$('meta[name="csrf_header"]').attr('content')] = $('meta[name="csrf"]').attr('content');
 
+    const app = new Vue(
+        {
+            el: '#app',
+            data() {
+                return {
+
+                    tableData: []
+                }
+            },
+            computed: {
+
+                notFalse() {
+                    return [...this.tableData].filter(item => item.progress === false);
+                },
+
+                sortedTableData() {
+                    return [...this.tableData].sort((a, b) => {
+                        return a.progress ? 1 : -1
+                    })
+                }
+            },
+
+            methods: {
+                send(item) {
+                    let checkboxF = {...item};
+                    if (item.progress === true) {
+                        checkboxF.progress = false;
+                    } else if (item.progress === false) {
+                        checkboxF.progress = true;
+                    }
+                    // axios.post('http://10.1.14.54:9000/api/saveFeedback', checkboxF)
+                    axios.post('http://localhost:9000/api/saveFeedback', checkboxF)
+                        .catch(error => {
+                        });
+                    console.log(checkboxF.progress);
+                },
+                priorityClass(item) {
+                    switch (item.priority) {
+                        case "high":
+                            return 'text-danger'
+                        case "medium":
+                            return 'text-warning'
+                        case "low":
+                            return 'text-info'
+                        case "very-low":
+                            return 'text-success'
+                    }
+                }
+            },
+            async created() {
+                let that = this;
+                // await $.getJSON('http://10.1.14.54:9000/api/db', function (data) {
+                await $.getJSON('http://localhost:9000/api/db', function (data) {
+
+                    that.tableData = data;
+                })
+            }
+        });
+</script>
 
 </div>
 </body>

@@ -31,6 +31,10 @@ public class RequestController {
     public String uploadDir;
 
 
+
+    public String backlash;
+
+
     @GetMapping("/nav_feedback")
     public String nav_feedbackForm(Model model) {
         model.addAttribute("nav_feedback", new Feedback());
@@ -52,6 +56,7 @@ public class RequestController {
     public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) throws IOException {
 
         Functions function = new Functions();
+
         if (!file.isEmpty()) {
             nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir));
         }
@@ -67,8 +72,10 @@ public class RequestController {
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+
         Resource file = new FileSystemResource(uploadDir + filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+                "attachment; filename=" + backlash + file.getFilename() + backlash).body(file);  //windows ?
+//                          "attachment; filename=/" + file.getFilename() + "/").body(file);   //linux ?
     }
 }

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{A_layout}">
+
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
+</head>
+
+
+<body class="my-auto">
+<div layout:fragment="content" id="app">
+
+    <div class="d-flex  justify-content-end " style="padding-bottom: 5px">
+        <a th:href="@{/resultTable}" class="btn">Future</a>
+    </div>
+
+    <table class="table" id="table" v-if="tableData.length">
+        <thead>
+        <tr>
+            <th data-field="id">Item ID</th>
+            <th data-field="email">email</th>
+            <th data-field="priority">priority</th>
+            <th data-field="category">category</th>
+            <th data-field="position">position</th>
+            <th data-field="filepath">pic</th>
+            <th data-field="date">date</th>
+            <th data-field="progress">progress</th>
+        </tr>
+        </thead>
+        <tbody>
+        <template v-for="item in notFalse">
+            <tr :key="item.id" :class="item.progress ? 'table-active' : ''">
+                <td>{{item.id}}</td>
+                <td>{{item.email}}</td>
+                <td :class="priorityClass(item)">{{item.priority}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.position}}</td>
+                <td><a :href="item.filepath" target="_blank">pic</a></td>
+                <td>{{item.date}}</td>
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input class="form-check-input labeled" type="checkbox" v-model="item.progress"
+                               @click="send(item)">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr :class="item.progress">
+                <td colspan="7">{{item.content}}</td>
+            </tr>
+        </template>
+
+        </tbody>
+    </table>
+    <script>
+        document.documentElement.style
+            .setProperty('--maxWidth', '1120px');
+        axios.defaults.headers.common[$('meta[name="csrf_header"]').attr('content')] = $('meta[name="csrf"]').attr('content');
+
+        const app = new Vue(
+            {
+                el: '#app',
+                data() {
+                    return {
+
+                        tableData: []
+                    }
+                },
+                computed: {
+
+                    notFalse() {
+                        return [...this.tableData].filter(item => item.progress === true);
+                    },
+
+                    sortedTableData() {
+                        return [...this.tableData].sort((a, b) => {
+                            return a.progress ? 1 : -1
+                        })
+                    }
+                },
+
+                methods: {
+                    send(item) {
+                        let checkboxF = {...item};
+                        if (item.progress === true) {
+                            checkboxF.progress = false;
+                        } else if (item.progress === false) {
+                            checkboxF.progress = true;
+                        }
+                        axios.post('http://10.1.14.54:9000/api/saveFeedback', checkboxF)
+                        // axios.post('http://localhost:9000/api/saveFeedback', checkboxF)
+                            .catch(error => {
+                            });
+                        console.log(checkboxF.progress);
+                    },
+                    priorityClass(item) {
+                        switch (item.priority) {
+                            case "high":
+                                return 'text-danger'
+                            case "medium":
+                                return 'text-warning'
+                            case "low":
+                                return 'text-primary'
+                            case "very-low":
+                                return 'text-success'
+                        }
+                    }
+                },
+                async created() {
+                    let that = this;
+                    await $.getJSON('http://10.1.14.54:9000/api/db', function (data) {
+                    // await $.getJSON('http://localhost:9000/api/db', function (data) {
+
+                        that.tableData = data;
+                    })
+                }
+            });
+    </script>
+
+</div>
+</body>
+</html>
