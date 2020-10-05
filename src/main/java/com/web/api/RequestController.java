@@ -6,6 +6,7 @@ import com.web.service.FeedbackService;
 import com.web.service.Functions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -23,6 +24,9 @@ import java.time.temporal.ChronoUnit;
 @Controller
 @RequestMapping("/")
 public class RequestController {
+
+    @Autowired
+    private Environment environment;
 
     @Autowired
     FeedbackService db;
@@ -57,6 +61,7 @@ public class RequestController {
 
         Functions function = new Functions();
 
+        System.out.println(environment.getProperty("mini.os"));
         if (!file.isEmpty()) {
             nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir));
         }

@@ -21,10 +21,8 @@ public class Functions {
     @Value("${admin.pass}")
     public String pass;
 
-    @Value("${OS}")
-    String os;
-
-    Object backlash;
+    @Value("${mini.os}")
+    public String backlash;
 
     public String saveFile(MultipartFile file, Feedback nav_feedback, String path) throws IOException {
 
@@ -34,9 +32,6 @@ public class Functions {
         file.transferTo(Paths.get(path + backlash + "pic" + nav_feedback.getId() + filetype));
         return (backlash + "files" + backlash + "pic" + nav_feedback.getId() + filetype);
     }
-
-
-
 
 
     public int getPort() {
