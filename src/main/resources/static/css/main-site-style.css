@@ -2,7 +2,7 @@
 
 :root {
     --darkColour: #242529;
-    --l_dsaBlue: #000066;
+    --l_LeoniBlue: #004086;
     --l_BlueSmoke: #8ea7c0;
     --l_BlueCornflower: #287fc1;
     --l_Khaki: #cdc09e;
@@ -21,58 +21,23 @@
 
 @font-face {
     font-family: MyriahPro-Regular;
-    src: url(fonts/MyriadPro-Regular.woff);
+    src: url(../../fonts/MyriadPro-Regular.woff);
 }
 
 @font-face {
     font-family: MyriahPro-lt;
-    src: url(fonts/MyriadPro-It.woff);
+    src: url(../../fonts/MyriadPro-It.woff);
 }
 
 @font-face {
     font-family: MyriahPro-Bold;
-    src: url(fonts/MyriadPro-Bold.woff);
+    src: url(../../fonts/MyriadPro-Bold.woff);
 }
 
 body {
     background-color: var(--l_BlueCornflower);
 }
 
-/*layout start*/
-
-#wrapper {
-    overflow-x: hidden;
-}
-#page-content-wrapper {
-    min-width: 100vw;
-}
-
-
-#sidebar-wrapper {
-    min-height: 100vh;
-    margin-left: -15rem;
-}
-
-#sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
-    font-size: 1.2rem;
-}
-
-#sidebar-wrapper .list-group {
-    width: 15rem;
-}
-
-
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-}
-#sidebar-wrapper {
-    margin-left: 0;
-}
 
 @media (min-width: 768px) {
 
@@ -80,23 +45,106 @@ body {
         min-width: 0;
         width: 100%;
     }
+
+
 }
+
+@mediA (max-width: 600px){
+    .rampuptext{
+        display: none;
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+    }
+}
+
+
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 3000px!important;
+    }}
 
 .navbar-collapse {
     flex-grow: 0!important;
 }
 
-.DarkMod-TODO {
-    width: 110px;
+/*.nav-item .nav-link {*/
+/*    color: #000000;*/
 
 
+/*}*/
+
+
+
+@keyframes bar {
+    0%  {border-bottom-width: 0px}
+    25% {border-bottom-width: 0.5px}
+    50% {border-bottom-width: 2px}
+    100%{border-bottom-width: 4px}
 
 }
 
-.navbar-toggler {
+
+.fill {
+    min-height: 78vh;
+    /*height: 100%;*/
+}
+
+.active {
+    color: var(--white);
+    background-color: var(--l_LeoniBlue);
+    
+
+
+    /*margin-bottom:0px;*/
+    /*border-bottom: solid 10px black;    */
+}
+
+.navbar {
+    background-color: #ffffff;
+    height: 8vh;
+    border-style:solid;
+    border-color: var(--l_LeoniBlue);
+    border-width: 0px;
+    border-bottom-width:20.5px !important;
 
 }
 
+.rampuptext {
+    color: var(--l_LeoniBlue);
+    font-size: 22px;
+    padding-left: 0!important;
+    padding-right: 10px;
+}
+
+.content {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #3aa934;
+}
+#page-content-wrapper {
+    /*background-color: #F5F5F5;*/
+}
+
+.test{
+ margin-right: 15%;
+    margin-left: 15%;
+    background-color: white;
+
+}
+.d-flex {
+    background-color: #fafafa;
+}
+
+.container {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+
+.container-fluid {
+    padding: 20px;
+
+}
 
 /*layout end*/
 
@@ -133,7 +181,7 @@ body {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #287fc1;
+    background: var(--l_LeoniBlue);
     width: 100%;
     border: 0;
     padding: 15px;
@@ -144,7 +192,7 @@ body {
     cursor: pointer;
 }
 .login-page .form button:hover,.form button:active,.form button:focus {
-    background: #285895;
+    background: var(--l_LeoniBlue);
 }
 .login-page .form .message {
     margin: 15px 0 0;
@@ -152,7 +200,7 @@ body {
     font-size: 12px;
 }
 .login-page .form .message a {
-    color: #287fc1;
+    color: var(--l_LeoniBlue);
     text-decoration: none;
 }
 .login-page .form .register-form {
@@ -178,6 +226,8 @@ tr:nth-of-type(4n+1) {
 
 
 /*login end*/
+
+
 
 
 

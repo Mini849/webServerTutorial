@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <body>
+                    <h4>3.1.3 Special inputs</h4>
+
+                    <p>Special inputs contain either complex formulas or macros.
+                        • Start of Production date (SoP)
+                        After selecting the input cell, a window will pop up.
+                        Note: When using dual-monitor setup, the pop-up window will usually appear on the main monitor,
+                        which doesn't need to be the one where the excel tool is shown. Do not be alarmed, excel is not
+                        frozen in that case.
+                    </p>
+
+                    <p>//TODO</p>
+
+                    <p>• Starting dates of the prototype phases
+                        The input column is coloured in red when incorrectly set up or empty. After choosing the correct
+                        dates, the cell will return to default colour.
+                        When choosing the dates, please choose from the list and start with the B Sample phase. Next
+                        phases will automatically limit the range of months, e.g. for C Sample, the range will be
+                        between Start of B Sample and start of SoP.
+                        This is set to limit the range from which the user chooses the dates.
+                        Empty:
+                    </p>
+
+                    <p>//TODO</p>
+
+                    <p>Properly set up from B_Sample phase until D_Sample phase</p>
+
+                    <p>//TODO</p>
+
+                    <p>• Total employee costs and the years affected
+                        The years shown in the HR inputs and found between the >< symbols, are automatically set based
+                        on the PM/Sales inputs from the top of the Base_Inputs
+                    </p>
+
+                    <p>//TODO</p>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nr. in picture
+                            </th>
+                            <th scope="col">Description
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1
+                            </th>
+                            <td>Responsible department
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2
+                            </th>
+                            <td>Salary increase expectation for year >> 2023 << This specifies that the percentage that
+                                the user puts in this row will affect the year 2023
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </body>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

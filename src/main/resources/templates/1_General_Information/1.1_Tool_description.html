@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{A_layout}">
-<head>
-    <title>About us</title>
-</head>
+      layout:decorate="~{layout}">
 <body>
 
 <div layout:fragment="content">
@@ -12,14 +9,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>Thank you for submission</h1>
-                    <p>#yolo</p>
-
-                    <p th:text="'content: ' + ${feedback.content}" />
-                    <p th:text="'category: ' + ${feedback.category}" />
-
-                    <a href="/nav_feedback">Submit another message</a>
-
+                    <h4>H4</h4>
+                    <p>This needs to be filled by information, placehodlerOnly</p>
                 </div>
             </div>
         </div>

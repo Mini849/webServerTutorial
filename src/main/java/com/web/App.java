@@ -33,8 +33,6 @@ public class App {
 
         SpringApplication.run(App.class, args);
 
-        System.out.println(clean);
-        System.out.println(backlash);
 
     }
 }

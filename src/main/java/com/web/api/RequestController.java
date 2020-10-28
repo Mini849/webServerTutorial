@@ -21,9 +21,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+@CrossOrigin(origins = "https://indplatform", maxAge = 3600)
 @Controller
 @RequestMapping("/")
 public class RequestController {
+
 
     @Autowired
     private Environment environment;
@@ -34,15 +36,15 @@ public class RequestController {
     @Value("${fileStorage.path}")
     public String uploadDir;
 
+    @ModelAttribute("profile")
+    public String activeProfile() {
+        return environment.getProperty("mini.ip");
+    }
 
-
-    public String backlash;
-
-
-    @GetMapping("/nav_feedback")
+    @GetMapping("/feedback")
     public String nav_feedbackForm(Model model) {
-        model.addAttribute("nav_feedback", new Feedback());
-        return "nav_feedback";
+        model.addAttribute("feedback", new Feedback());
+        return "feedback";
     }
 
     @GetMapping("/login")
@@ -53,34 +55,53 @@ public class RequestController {
     @PostMapping("/login")
     public String loginPost() {
         System.out.println("user logged in");
-        return "hello";
+        return "home";
     }
 
-    @PostMapping("/nav_feedback")
+    @GetMapping("/resultTable")
+    public String resultTable(Model model) {
+
+        model.addAttribute("ip", environment.getProperty("mini.ip"));
+        model.addAttribute("port", environment.getProperty("server.port"));
+
+        return "resultTable";
+    }
+
+
+    @GetMapping("/history")
+    public String history(Model model) {
+
+        model.addAttribute("ip", environment.getProperty("mini.ip"));
+        model.addAttribute("port", environment.getProperty("server.port"));
+
+        return "history";
+    }
+
+    @PostMapping("/feedback")
     public String nav_feedback_result(@ModelAttribute Feedback nav_feedback, @RequestParam("file") MultipartFile file) throws IOException {
 
         Functions function = new Functions();
-
-        System.out.println(environment.getProperty("mini.os"));
+        System.out.println(nav_feedback.getId());
         if (!file.isEmpty()) {
-            nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir));
+            nav_feedback.setFilepath(function.saveFile(file, nav_feedback, uploadDir, environment.getProperty("mini.os")));
         }
-
 
         nav_feedback.setProgress(false);
         nav_feedback.setDate(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_DATE_TIME));
         System.out.println(nav_feedback);
         db.saveOrUpdate(nav_feedback);
-        return "nav_feedback_result";
+        return "feedback_result";
     }
 
-    @GetMapping("/files/{filename:.+}")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+            @GetMapping("/files/{filename:.+}")
+            @ResponseBody
+            public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+                System.out.println("filename: " + filename);
+                System.out.println("uploadDir: " + uploadDir);
+                Resource file = new FileSystemResource(uploadDir + filename);
 
-        Resource file = new FileSystemResource(uploadDir + filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=" + backlash + file.getFilename() + backlash).body(file);  //windows ?
-//                          "attachment; filename=/" + file.getFilename() + "/").body(file);   //linux ?
-    }
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+
+                        "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+            }
 }

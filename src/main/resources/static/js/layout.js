@@ -14,4 +14,5 @@ window.onload   = function () {
         $("#wrapper").toggleClass("toggled");
         localStorage.setItem('state', (document.getElementById('wrapper').className))
     });
+
 }

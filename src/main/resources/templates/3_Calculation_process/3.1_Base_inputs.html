@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>3.1 Base inputs</h4>
+                    <p>Base_Inputs sheet is used for setting up the calculation scenario and inputs. Based on the
+                        selected approach and calculation options, only necessary input rows will be shown.
+                        The calculation scenario and approach need to be known first, based on the decision proper
+                        selection has to be carried out. Afterwards, the PM or Sales representative need to set up their
+                        part of the inputs.
+                        Their inputs will influence not only what is available for other departments to fill in, but
+                        also the general appearance of all other calculation sheets.
+                        This section will not go into detail on specific inputs in the Base_Inputs sheet as they are
+                        described in the tool itself and in following sections of this document where needed.
+                        Exception are inputs which are macro enabled.
+                    </p>
+
+                    <p>//TODO picture</p>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nr. in picture
+                            </th>
+                            <th scope="col">Item
+                            </th>
+                            <th scope="col">Description
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1
+                            </th>
+                            <td>Option switch for the Light and FFG approach
+                            </td>
+                            <td>Toggle between Light and FFG approach
+                                Note: It takes a few seconds before the tool manages the switch
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2
+                            </th>
+                            <td>Option switch for the DPCPS sheet
+                            </td>
+                            <td>Toggle between Automatic and Manual approach
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3
+                            </th>
+                            <td>Option switch for the IPCPS sheet
+                            </td>
+                            <td>Toggle between Automatic and Manual approach
+                                Note: When FFG approach is chosen, IPCPS sheet is locked in FFG approach
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4
+                            </th>
+                            <td>Option switch for the IPCCF sheet
+                            </td>
+                            <td>Toggle between Automatic and Manual approach
+                                Note: When FFG approach is chosen, IPCCF sheet is locked in FFG approach
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5
+                            </th>
+                            <td>Filter with macro support
+                            </td>
+                            <td>Only available filter in the Base_Inputs sheet. Regular filter would cover/uncover again
+                                inputs that aren't needed for the calculation.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6
+                            </th>
+                            <td>Button for the Technical ID database update
+                            </td>
+                            <td>Updates the Technical ID database in case new equipment was added. Isn't required to do.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7
+                            </th>
+                            <td>Home Site
+                            </td>
+                            <td>Home site enables users to download latest version of the Ramp up tool, example, manual and to provide <feedback>   </feedback>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

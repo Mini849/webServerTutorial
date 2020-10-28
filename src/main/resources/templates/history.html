@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{A_layout}">
+      layout:decorate="~{layout}">
 
 
 <head>
@@ -63,10 +63,13 @@
 
         </tbody>
     </table>
-    <script>
+    <script th:inline="javascript">
         document.documentElement.style
             .setProperty('--maxWidth', '1120px');
         axios.defaults.headers.common[$('meta[name="csrf_header"]').attr('content')] = $('meta[name="csrf"]').attr('content');
+
+        var ip = [[${ip}]];
+        var port = [[${port}]];;
 
         const app = new Vue(
             {
@@ -98,8 +101,8 @@
                         } else if (item.progress === false) {
                             checkboxF.progress = true;
                         }
-                        axios.post('http://10.1.14.54:9000/api/saveFeedback', checkboxF)
-                        // axios.post('http://localhost:9000/api/saveFeedback', checkboxF)
+                        console.log(ip + ":" + port + "/api/saveFeedback")
+                        axios.post(ip + ":" + port + "/api/saveFeedback", checkboxF)
                             .catch(error => {
                             });
                         console.log(checkboxF.progress);
@@ -119,8 +122,8 @@
                 },
                 async created() {
                     let that = this;
-                    await $.getJSON('http://10.1.14.54:9000/api/db', function (data) {
-                    // await $.getJSON('http://localhost:9000/api/db', function (data) {
+                    console.log(ip + ":" + port +  "/api/db")
+                    await $.getJSON(ip + ":" + port +  "/api/db", function (data) {
 
                         that.tableData = data;
                     })

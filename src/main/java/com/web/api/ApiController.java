@@ -1,12 +1,17 @@
 package com.web.api;
 
 import com.web.model.Feedback;
+
 import com.web.service.FeedbackService;
+
+import com.web.service.ReworkService;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -17,6 +22,10 @@ public class ApiController {
 
     @Autowired
     BuildProperties buildProperties;
+
+    @Autowired
+    ReworkService reworkService;
+
 
     @GetMapping("/feedback/{id}")
     private Feedback getFeedback(long id) {
@@ -34,6 +43,20 @@ public class ApiController {
         System.out.println("Build version:" + buildProperties.getVersion());
 
         return feedbackService.getAllFeedbacks();
+    }
+
+    @RequestMapping(
+            value = "/Glechau/reworkData",
+            method = RequestMethod.POST)
+    public void process(@RequestBody List<String> payload)
+            throws Exception {
+
+        reworkService.save(payload);
+    }
+
+    @GetMapping("/Glechau/reworkData")
+    public String getJson() throws IOException, JSONException {
+        return reworkService.getPayload();
     }
 
     @PostMapping("/saveFeedback")

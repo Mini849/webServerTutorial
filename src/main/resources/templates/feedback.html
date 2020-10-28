@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{A_layout}">
+      layout:decorate="~{layout}">
 <head>
     <title>About us</title>
 </head>
@@ -15,7 +15,7 @@
     <div class="container">
 
 
-        <form action="" th:action="@{/nav_feedback}" th:object="${nav_feedback}" method="post"
+        <form action="" th:action="@{/feedback}" th:object="${feedback}" method="post"
               enctype="multipart/form-data">
 
 

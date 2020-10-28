@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>3.2.1	DPCPS Manual</h4>
+                    <p>When calculating with manual method, the main headcount input is entered in this sheet. Inputs required from Base_Inputs are needed mainly to set the length of Ramp-up period, salaries and not for calculating headcount. Volume inputs is needed for the Scrap sheet, not for the headcount.
+                    </p>
+                    <p>Inputs required:</p>
+
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Sheet
+                            </th>
+                            <th scope="col">Cell
+                            </th>
+                            <th scope="col">Variable
+                            </th>
+                            <th scope="col">Formula	Description
+                            </th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <th scope="row">Base_Inputs
+                            </th>
+                            <td>D10
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>3
+                            </td>
+                            <td>Start of production date (SoP)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Base_Inputs
+                            </th>
+                            <td>D11
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>3
+                            </td>
+                            <td>Length of the Ramp up period
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>Row 26
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>4
+                            </td>
+                            <td>Ordered volume
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>Row 34
+                            </td>
+                            <td>A
+                            </td>
+                            <td>5, 7
+                            </td>
+                            <td>Head count + training
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>Row 35
+                            </td>
+                            <td>B
+                            </td>
+                            <td>6, 7
+                            </td>
+                            <td>Percentage of booked costs
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Base_Inputs
+                            </th>
+                            <td>D60
+                            </td>
+                            <td>D
+                            </td>
+                            <td>8
+                            </td>
+                            <td>Total costs per month in start of Ramp up period year (Direct employee)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Base_Inputs
+                            </th>
+                            <td>D67
+                            </td>
+                            <td>E
+                            </td>
+                            <td>8
+                            </td>
+                            <td>Salary increase in following year after start of Ramp up
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Base_Inputs
+                            </th>
+                            <td>D68
+                            </td>
+                            <td>E
+                            </td>
+                            <td>8
+                            </td>
+                            <td>Salary increase in 2nd following year after start of Ramp up
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Base_Inputs
+                            </th>
+                            <td>D69
+                            </td>
+                            <td>E
+                            </td>
+                            <td>8
+                            </td>
+                            <td>Salary increase in 3rd following year after start of Ramp up
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>Column AO
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>
+                            </td>
+                            <td>Values in SOP month. It is used for calculation of indirect HC.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>C22
+                            </td>
+                            <td>F
+                            </td>
+                            <td>6
+                            </td>
+                            <td>Percentage of Directs' costs booked to this ramp up
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>B10
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>
+                            </td>
+                            <td>Sheet checking procedure Yes/No
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>C16
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>
+                            </td>
+                            <td>Switch between automatic and manual method of calculation
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>C40
+                            </td>
+                            <td>N/A
+                            </td>
+                            <td>
+                            </td>
+                            <td>Option to show the salaries in different years
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>C41-44
+                            </td>
+                            <td>C
+                            </td>
+                            <td>7, 8
+                            </td>
+                            <td>Option to change the salaries for direct employees
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p>DPCPS Manual – Formulas:</p>
+
+                    <p>//TODO bunch of pictures</p>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nr. of Formula
+                            </th>
+                            <th scope="col">Item
+                            </th>
+                            <th scope="col">Description
+                            </th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <th scope="row">1
+                            </th>
+                            <td>Automatic calculation or manual input of HC
+                            </td>
+                            <td>Input - Switch between automatic and manual method of calculation
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2
+                            </th>
+                            <td>Percentage of Directs' costs booked to this ramp up
+                            </td>
+                            <td>Input - How much of the costs in this sheet will be booked to the new, calculated project. Default is 100%, but in some scenarios, like ramp down with ramp up, the costs for already employed MA can be shared.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3
+                            </th>
+                            <td>Month
+                            </td>
+                            <td>The quantity of months is based on the length of the ramp up period.
+                                Specific months are then populated as a range between SoP month and back to the first ramp up period month.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4
+                            </th>
+                            <td>Ordered volume - calculated
+                            </td>
+                            <td>Volumes need to be entered manually in manual mode.
+                                Not used for headcount calculation, but it is used for some Indirect positions.
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5
+                            </th>
+                            <td>Head count + training
+                            </td>
+                            <td>Input - Needed headcount of direct personnel including those in training and not yet directly producing
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">6
+                            </th>
+                            <td>Percentage of booked costs per month
+                            </td>
+                            <td>Is filled with the value F from C22, if there is any production in the given month.
+                                Can be overwritten manually, if there are differences between months.
+
+                                B = F
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">7
+                            </th>
+                            <td>Direct personnel costs
+                            </td>
+                            <td>Cost for each month is calculated from headcount in that month, salary in that month (depending on year) and percentage of booked costs
+                                Direct personnel costs=A *C *B
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">8
+                            </th>
+                            <td>Salaries in a given year
+                            </td>
+                            <td>Directs' salaries can be adjusted here, or let the tool calculate them from monthly costs D and yearly increases E.
+                                Calculation of C for next year: D is salary expenses from current year and E is the increase for next year.
+
+                                C=D*(1+E)
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
