@@ -16,7 +16,6 @@ public class TemplateConfig  implements WebMvcConfigurer {
         registry.addViewController("/layout").setViewName("layout");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/manual").setViewName("manual");
-        registry.addViewController("/nav_about").setViewName("nav_about");
         registry.addViewController("/resultTable").setViewName("resultTable");
         registry.addViewController("/1.1_Tool_description").setViewName("1_General_Information/1.1_Tool_description");
         registry.addViewController("/1.2_Purpose_and_main_use_case").setViewName("1_General_Information/1.2_Purpose_and_main_use_case");

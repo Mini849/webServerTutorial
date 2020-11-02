@@ -3,6 +3,9 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 
+<head>
+    <title>Ramp up Tool: Download</title>
+</head>
 <body>
 
 <div layout:fragment="content">
@@ -10,9 +13,40 @@
     <section class="my-10">
         <div class="container">
             <div class="row">
-                <div  class="col-md-12">
-                    <p>Download the latest version of the tool //test<a th:href="@{https://localhost:9000/files/Ramp up tool v1.5.0 - Manual.docx}" class="alert-link">here</a>.</p>
-                    <p>Download the latest version of the tool //linuxTest<a th:href="@{https://indplatform:9000/files/Ramp up tool v1.5.0 - Manual.docx}" class="alert-link">here</a>.</p>
+                <div class="col-md-12">
+                    <div class="container buble"><a
+                            th:href="@{http://indplatform:9000/files/Ramp up tool.xlsm}"
+                            class="alert-link">Download</a> the latest version of the Ramp up tool.
+                    </div>
+                    <br>
+                    <h3 class="leoni">Introduction</h3>
+                    <hr>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Ramp Up Tool Introduction.pptx}"
+                            class="alert-link">Download</a> the powerPoint introduction to the tool.</a>
+                  <br>
+                    <br>
+                    <h3 class="leoni">Manuals</h3>
+                    <hr>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Ramp up tool - quick guide.pdf}"
+                            class="alert-link">Download</a> Quick guide to the tool.</a>
+                    <br>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Ramp up tool - Manual.pdf}"
+                            class="alert-link">Download</a> the Manual to the tool.</a>
+                    <br>
+                    <br>
+                    <h3 class="leoni">Examples</h3>
+                    <hr>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Example1_LightApproach_Manual_Manual_settings.xlsm}"
+                            class="alert-link">Download</a> the LightApproach example with Manual settings.</a>
+                    <br>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Example2_FFGApproach_Automatic_settings.xlsm}"
+                            class="alert-link">Download</a> the FFGApproach example with Automatic settings.</a>
+
 
                 </div>
             </div>

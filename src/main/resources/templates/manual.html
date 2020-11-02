@@ -3,6 +3,12 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout}">
 
+
+
+<head>
+    <title>Ramp up Tool: Manuals</title>
+</head>
+
 <body>
 
 <div layout:fragment="content">
@@ -11,9 +17,18 @@
         <div class="container">
             <div class="row">
                 <div  class="col-md-12">
-                    <p>Download the latest version of the tool //test<a th:href="@{https://localhost:9000/files/Ramp up tool v1.5.0 - Manual.docx}" class="alert-link">here</a>.</p>
-                    <p>Download the latest version of the tool //linuxTest<a th:href="@{https://indplatform:9000/files/Ramp up tool v1.5.0 - Manual.docx}" class="alert-link">here</a>.</p>
+                    <p style="font-style: italic"> The online manual will be available in the near future.</p>
+<br>
 
+                    <h3 class="leoni">Manuals</h3>
+                    <hr>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Ramp up tool - quick guide.pdf}"
+                            class="alert-link">Download</a> Quick guide to the tool.</a>
+                    <br>
+                    <a><a
+                            th:href="@{http://indplatform:9000/files/Ramp up tool - Manual.pdf}"
+                            class="alert-link">Download</a> the Manual to the tool.</a>
                 </div>
             </div>
         </div>

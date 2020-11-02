@@ -14,8 +14,7 @@ import java.util.Map;
 
 @Service
 public class ReworkService {
-    Map<String, Object>[] payload;
-    JSONParser parser = new JSONParser();
+
 
     @Value("${mini.glechau.jsonLocation}")
     public String location;
@@ -23,31 +22,51 @@ public class ReworkService {
     public void save(List<String> data) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-
             // Writing to a file
             mapper.writeValue(new File(location + "data.json"), data );
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public String getPayload() throws JSONException, IOException {
-
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-
         try (FileReader reader = new FileReader(location + "data.json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
-
             return obj.toString();
-
-
-
     } catch (ParseException e) {
             e.printStackTrace();
         }
         return "failed to receive data, please connect to the network";
-    }}
+    }
+
+
+    public void savetype(List<String> data) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            // Writing to a file
+            mapper.writeValue(new File(location + "datatype.json"), data );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getPayloadtype() throws JSONException, IOException {
+        //JSON parser object to parse read file
+        JSONParser jsonParser = new JSONParser();
+        try (FileReader reader = new FileReader(location + "datatype.json"))
+        {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+            return obj.toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "failed to receive data, please connect to the network";
+    }
+
+
+}

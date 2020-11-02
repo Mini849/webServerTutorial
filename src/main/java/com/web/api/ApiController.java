@@ -59,6 +59,23 @@ public class ApiController {
         return reworkService.getPayload();
     }
 
+
+    @RequestMapping(
+            value = "/Glechau/reworkDataType",
+            method = RequestMethod.POST)
+    public void processtype(@RequestBody List<String> payload)
+            throws Exception {
+
+        reworkService.savetype(payload);
+    }
+
+    @GetMapping("/Glechau/reworkDataType")
+    public String getJsontype() throws IOException, JSONException {
+        return reworkService.getPayloadtype();
+    }
+
+
+
     @PostMapping("/saveFeedback")
     private long saveFeedback(@RequestBody Feedback feedback) {
         feedbackService.saveOrUpdate(feedback);
