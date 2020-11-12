@@ -34,4 +34,8 @@ public class Mer_Service_yoink {
         merRepo_yoink.deleteById(id);
     }
 
+    public void deleteAll() {
+        merRepo_yoink.deleteAll();
+    }
+
 }

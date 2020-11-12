@@ -60,6 +60,9 @@ public class ApiController {
             method = RequestMethod.POST)
     public void process(@RequestBody Mer_Data merData) {
 
+        mer_service_data.deleteAll();
+        mer_service_yoink.deleteAll();
+
         for (String a : merData.getData()) {
             MerM_Data merM_data = new MerM_Data();
             merM_data.setData(a);
@@ -78,7 +81,7 @@ public class ApiController {
         return mer_service_data.getAllMerData();
     }
 
-    @GetMapping("Meerane/reworkDataa")
+    @GetMapping("Meerane/all")
     private MerGet_Data getallYoinksMer() {
         mer_service_data.getAllMerData();
       mer_service_yoink.getAllMerYoink();

@@ -33,4 +33,8 @@ public class Mer_Service_data {
         merRepositary_data.deleteById(id);
     }
 
+    public void deleteAll() {
+        merRepositary_data.deleteAll();
+    }
+
 }
