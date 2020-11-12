@@ -16,7 +16,7 @@
 
 
         <form action="" th:action="@{/feedback}" th:object="${feedback}" method="post"
-              enctype="multipart/form-data">
+              enctype="multipart/form-merData">
 
 
             <div class="form-row">
@@ -101,7 +101,7 @@
                           th:field="*{content}"></textarea>
             </div>
 
-                     <!--            <form method="POST" action="/upload" enctype="multipart/form-data">-->
+                     <!--            <form method="POST" action="/upload" enctype="multipart/form-merData">-->
             <div class="form-group">
                 <input type="file" class="form-control-file" id="fileFormControl" name="file">
             </div>

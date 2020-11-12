@@ -11,9 +11,9 @@ import javax.persistence.Table;
 @Table(name = "TBL_FEEDBACK")
 public class Feedback {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
 
     @Column(name = "email")
     private String email;

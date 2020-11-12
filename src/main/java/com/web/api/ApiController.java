@@ -1,16 +1,22 @@
 package com.web.api;
 
+import com.web.getModel.MerGet_Data;
+import com.web.model.MerM_Data;
+import com.web.model.Mer_Yoink;
+import com.web.postModel.Mer_Data;
 import com.web.model.Feedback;
+
 
 import com.web.service.FeedbackService;
 
+import com.web.service.Mer_Service_data;
+import com.web.service.Mer_Service_yoink;
 import com.web.service.ReworkService;
-import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+
 import java.util.*;
 
 @RestController
@@ -26,6 +32,13 @@ public class ApiController {
     @Autowired
     ReworkService reworkService;
 
+    @Autowired
+    Mer_Service_data mer_service_data;
+
+    @Autowired
+    Mer_Service_yoink mer_service_yoink;
+
+
 
     @GetMapping("/feedback/{id}")
     private Feedback getFeedback(long id) {
@@ -39,41 +52,43 @@ public class ApiController {
 
     @GetMapping("/db")
     private List<Feedback> getAllFeedbacks() {
-
-        System.out.println("Build version:" + buildProperties.getVersion());
-
         return feedbackService.getAllFeedbacks();
     }
 
     @RequestMapping(
-            value = "/Glechau/reworkData",
+            value = "/Meerane/reworkData",
             method = RequestMethod.POST)
-    public void process(@RequestBody List<String> payload)
-            throws Exception {
+    public void process(@RequestBody Mer_Data merData) {
 
-        reworkService.save(payload);
+        for (String a : merData.getData()) {
+            MerM_Data merM_data = new MerM_Data();
+            merM_data.setData(a);
+            mer_service_data.saveOrUpdate(merM_data);
+        }
+
+        for (String a : merData.getYoink()) {
+            Mer_Yoink mer_yoink = new Mer_Yoink();
+            mer_yoink.setYoink(a);
+            mer_service_yoink.saveOrUpdate(mer_yoink);
+        }
     }
 
-    @GetMapping("/Glechau/reworkData")
-    public String getJson() throws IOException, JSONException {
-        return reworkService.getPayload();
+    @GetMapping("/Meerane/reworkData")
+    private List<String> getAllDataMeeranes() {
+        return mer_service_data.getAllMerData();
     }
 
+    @GetMapping("Meerane/reworkDataa")
+    private MerGet_Data getallYoinksMer() {
+        mer_service_data.getAllMerData();
+      mer_service_yoink.getAllMerYoink();
 
-    @RequestMapping(
-            value = "/Glechau/reworkDataType",
-            method = RequestMethod.POST)
-    public void processtype(@RequestBody List<String> payload)
-            throws Exception {
+    MerGet_Data w = new MerGet_Data();
+    w.data =  mer_service_data.getAllMerData();
+    w.yoink = mer_service_yoink.getAllMerYoink();
 
-        reworkService.savetype(payload);
+        return w;
     }
-
-    @GetMapping("/Glechau/reworkDataType")
-    public String getJsontype() throws IOException, JSONException {
-        return reworkService.getPayloadtype();
-    }
-
 
 
     @PostMapping("/saveFeedback")

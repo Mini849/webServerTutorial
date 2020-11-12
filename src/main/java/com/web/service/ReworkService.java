@@ -23,7 +23,9 @@ public class ReworkService {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Writing to a file
+            System.out.println("ReworkService 26: Passed");
             mapper.writeValue(new File(location + "data.json"), data );
+            System.out.println("ReworkService 28: Passed");
         } catch (IOException e) {
             e.printStackTrace();
         }

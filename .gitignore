@@ -13,7 +13,7 @@ build/
 .settings
 .springBeans
 .sts4-cache
-data
+merData
 
 ### IntelliJ IDEA ###
 .idea

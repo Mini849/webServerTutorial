@@ -32,14 +32,14 @@
     <table class="table" id="table" v-if="tableData.length">
         <thead>
         <tr style="background: white">
-            <th data-field="id">Item ID</th>
-            <th data-field="email">email</th>
-            <th data-field="priority">priority</th>
-            <th data-field="category">category</th>
-            <th data-field="position">position</th>
-            <th data-field="filepath">pic</th>
-            <th data-field="date">date</th>
-            <th data-field="progress">progress</th>
+            <th merData-field="id">Item ID</th>
+            <th merData-field="email">email</th>
+            <th merData-field="priority">priority</th>
+            <th merData-field="category">category</th>
+            <th merData-field="position">position</th>
+            <th merData-field="filepath">pic</th>
+            <th merData-field="date">date</th>
+            <th merData-field="progress">progress</th>
         </tr>
         </thead>
         <tbody>
@@ -78,7 +78,7 @@
     const app = new Vue(
         {
             el: '#app',
-            data() {
+            merData() {
                 return {
 
                     tableData: []
@@ -130,9 +130,9 @@
             async created() {
                 let that = this;
                 console.log(ip + ":" + port +  "/api/db")
-                await $.getJSON(ip + ":" + port +  "/api/db", function (data) {
+                await $.getJSON(ip + ":" + port +  "/api/db", function (merData) {
 
-                    that.tableData = data;
+                    that.tableData = merData;
                 })
             }
         });
