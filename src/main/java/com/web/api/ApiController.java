@@ -2,16 +2,14 @@ package com.web.api;
 
 import com.web.getModel.MerGet_Data;
 import com.web.model.MerM_Data;
+import com.web.model.Mer_Trailers;
 import com.web.model.Mer_Yoink;
 import com.web.postModel.Mer_Data;
 import com.web.model.Feedback;
 
 
-import com.web.service.FeedbackService;
+import com.web.service.*;
 
-import com.web.service.Mer_Service_data;
-import com.web.service.Mer_Service_yoink;
-import com.web.service.ReworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.*;
@@ -38,6 +36,8 @@ public class ApiController {
     @Autowired
     Mer_Service_yoink mer_service_yoink;
 
+    @Autowired
+    Mer_Service_trailers mer_service_trailers;
 
 
     @GetMapping("/feedback/{id}")
@@ -62,6 +62,7 @@ public class ApiController {
 
         mer_service_data.deleteAll();
         mer_service_yoink.deleteAll();
+        mer_service_trailers.deleteAll();
 
         for (String a : merData.getData()) {
             MerM_Data merM_data = new MerM_Data();
@@ -74,22 +75,30 @@ public class ApiController {
             mer_yoink.setYoink(a);
             mer_service_yoink.saveOrUpdate(mer_yoink);
         }
+
+        for (String a : merData.getTrailers()) {
+            Mer_Trailers mer_trailers = new Mer_Trailers();
+            mer_trailers.setTrailers(a);
+            mer_service_trailers.saveOrUpdate(mer_trailers);
+        }
+
+
     }
 
     @GetMapping("/Meerane/reworkData")
     private List<String> getAllDataMeeranes() {
-        return mer_service_data.getAllMerData();
+        return mer_service_data.getAll();
     }
 
     @GetMapping("Meerane/all")
-    private MerGet_Data getallYoinksMer() {
-        mer_service_data.getAllMerData();
-      mer_service_yoink.getAllMerYoink();
+    private MerGet_Data getAllMerData() {
+        mer_service_data.getAll();
+        mer_service_yoink.getAll();
 
-    MerGet_Data w = new MerGet_Data();
-    w.data =  mer_service_data.getAllMerData();
-    w.yoink = mer_service_yoink.getAllMerYoink();
-
+        MerGet_Data w = new MerGet_Data();
+        w.data = mer_service_data.getAll();
+        w.yoink = mer_service_yoink.getAll();
+        w.trailers = mer_service_trailers.getAll();
         return w;
     }
 

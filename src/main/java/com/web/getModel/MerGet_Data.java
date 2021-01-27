@@ -13,7 +13,6 @@ public class MerGet_Data {
 
     public List<String> data;
     public List<String> yoink;
-
-
+    public List<String> trailers;
 
 }

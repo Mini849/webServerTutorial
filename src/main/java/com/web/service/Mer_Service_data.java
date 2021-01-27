@@ -15,18 +15,18 @@ public class Mer_Service_data {
     @Autowired
     MerRepo_data merRepositary_data;
 
-    public List<String> getAllMerData() {
+    public List<String> getAll() {
         List<String> mer_m_data = new ArrayList<String>();
         merRepositary_data.findAll().forEach(MerM_Data -> mer_m_data.add(MerM_Data.getData()));
         return mer_m_data;
     }
 
-    public MerM_Data getData_MeeraneByID(long id) {
+    public MerM_Data getById(long id) {
         return merRepositary_data.findById(id).get();
     }
 
-    public void saveOrUpdate(MerM_Data dataMeerane) {
-        merRepositary_data.save(dataMeerane);
+    public void saveOrUpdate(MerM_Data data) {
+        merRepositary_data.save(data);
     }
 
     public void delete(long id) {
