@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>3.1.1	Setting up the calculation approach</h4>
+
+                    <p>While the Light approach offers maximum flexibility, the FFG approach locks the IPCPS and IPCCF sheets in a standard approach for FFG.</p>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Base Inputs
+                            </th>
+                            <th scope="col">Light Approach
+                            </th>
+                            <th scope="col">FFG Approach
+                            </th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <th scope="row">DPCPS
+                            </th>
+                            <td>DPCPS / Manual
+                            </td>
+                            <td>DPCPS / Manual
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">IPCPS
+                            </th>
+                            <td>DPCPS / Manual
+                            </td>
+                            <td>FFG
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">IPCCF
+                            </th>
+                            <td>DPCPS / Manual
+                            </td>
+                            <td>FFG
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Other sheets
+                            </th>
+                            <td>No impact
+                            </td>
+                            <td>No impact
+                            </td>
+                        </tr>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

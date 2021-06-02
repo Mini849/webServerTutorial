@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Ramp up Tool: Feedback</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+
+
+    <div style="height: 20px"></div>
+
+    <div class="container">
+
+
+        <form action="" th:action="@{/feedback}" th:object="${feedback}" method="post"
+              enctype="multipart/form-merData">
+
+
+            <div class="form-row">
+                <div class="col-md-4 mb-2">
+                    <label for="validationServer01">Email</label>
+                    <input type="text" class="form-control" id="validationServer01"
+                           th:field="*{email}"
+                           required>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-between">
+                <div class="col-md-4 mb-2">
+                    <label for="validationServerPriority">Priority</label>
+                    <div class="input-group">
+                        <select class="form-control" th:field="*{priority}" id="validationServerPriority" required>
+                            <option value="">Select Priority</option>
+                            <option th:value="very-low" th:text="very-low"></option>
+                            <option th:value="low" th:text="low"></option>
+                            <option th:value="normal" th:text="normal"></option>
+                            <option th:value="high" th:text="high"></option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please choose the priority.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-2">
+                    <label for="validationServerCategory">Category</label>
+                    <div class="input-group">
+                        <select class="form-control" th:field="*{category}" id="validationServerCategory" required>
+
+                            <option value="">Select Category</option>
+                            <option th:value="text">Text</option>
+                            <option th:value="format">Format</option>
+                            <option th:value="formula">Formula</option>
+                            <option th:value="Macro">Macro</option>
+                            <option th:value="Feature">Feature</option>
+                            <option th:value="Suggestion">Suggestion</option>
+                            <option th:value="Other">Other</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Please choose the category.
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4 mb-2">
+                    <label for="validationServerPosition">Position</label>
+                    <div class="input-group">
+                        <select class="form-control" th:field="*{position}" id="validationServerPosition" required>
+
+                            <option value="">Select Position</option>
+                            <option th:value="BaseInputs">Base Inputs</option>
+                            <option th:value="DPCPS">DPCPS</option>
+                            <option th:value="IPCPS">IPCPS</option>
+                            <option th:value="IPCCF">IPCCF</option>
+                            <option th:value="OPRC">OPRC</option>
+                            <option th:value="MCFTH">MCFTH</option>
+                            <option th:value="SCRAP">SCRAP</option>
+                            <option th:value="PC">PC</option>
+                            <option th:value="TS">TS</option>
+                            <option th:value="PVC">PVC</option>
+                            <option th:value="Result">Result</option>
+                            <option th:value="Other">Other</option>
+
+                        </select>
+                        <div class="invalid-feedback">
+                            Please choose the Position.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Write your feedack here</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"
+                          th:field="*{content}"></textarea>
+            </div>
+
+                     <!--            <form method="POST" action="/upload" enctype="multipart/form-merData">-->
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="fileFormControl" name="file">
+            </div>
+            <!--            </form>-->
+
+            <button class="btn btn-primary" style="background-color: var(--l_LeoniBlue)" type="submit">Submit form</button>
+
+        </form>
+
+    </div>
+    <div style="height: 20px"></div>
+</div>
+</body>
+</html>

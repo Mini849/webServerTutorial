@@ -1,0 +1,260 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+:root {
+    --darkColour: #242529;
+    --l_LeoniBlue: #004086;
+    --l_BlueSmoke: #8ea7c0;
+    --l_BlueCornflower: #287fc1;
+    --l_Khaki: #cdc09e;
+    --l_GreenCaper: #7f8056;
+    --l_GreenYellow: #b0ca04;
+    --l_VioletSlate: #524068;
+    --l_GreenPermanent: #3aa934;
+    --l_GrayMetal: #b4bbbf;
+    --l_YellowJuice: #eeca00;
+    --l_RedOrient: #ab0c21;
+    --l_OrangeRed: #ec6600;
+    --white: #ffffff;
+    --maxWidth: 720px;
+    --whiteish: #F8F9FA;
+}
+
+@font-face {
+    font-family: MyriahPro-Regular;
+    src: url(../../fonts/MyriadPro-Regular.woff);
+}
+
+@font-face {
+    font-family: MyriahPro-lt;
+    src: url(../../fonts/MyriadPro-It.woff);
+}
+
+@font-face {
+    font-family: MyriahPro-Bold;
+    src: url(../../fonts/MyriadPro-Bold.woff);
+}
+
+body {
+    background-color: var(--l_BlueCornflower);
+}
+
+
+@media (min-width: 768px) {
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+
+}
+
+@mediA (max-width: 800px){
+    .rampuptext{
+        display: none;
+        visibility: hidden;
+        width: 0px;
+        height: 0px;
+    }
+}
+
+
+@media (min-width: 1200px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 3000px!important;
+    }}
+
+.navbar-collapse {
+    flex-grow: 0!important;
+}
+
+
+
+.nav-item .nav-link {
+    color: black;
+    margin-top: 2em;
+    padding:  .5rem 1em 1em !important;
+}
+
+.nav-item .nav-link:hover {
+    color: var(--l_LeoniBlue);
+}
+
+.active {
+/*border-radius: 20px 20px 0px 0px;*/
+
+    background-color: var(--l_LeoniBlue);
+    border-bottom: solid 10px var(--l_LeoniBlue) !important;
+    color: var(--white) !important;
+
+
+    /*margin-bottom:0px;*/
+
+}
+
+
+
+
+.fill {
+    min-height: 76vh;
+    /*min-height: 92vh;*/
+    /*height: 100%;*/
+}
+
+
+.navbar {
+    background-color: #ffffff;
+    min-height: 20px;
+    height: 4.5em;
+    border-style:solid;
+    border-color: var(--l_LeoniBlue);
+    border-width: 0px;
+    border-bottom-width:20.5px !important;
+
+}
+
+.buble {
+    background-color: #fafafa;
+    border-radius: 25px;
+    border: 1px solid #bababa;
+    padding: 10px;
+    text-align: center ;
+
+}
+.leoni{
+    font-weight: bold;
+    color: var(--l_LeoniBlue);
+
+}
+
+.page-footer {
+    /*min-height: 90vh;*/
+background-color: #fafafa;
+    border-top: 1px #d9d9d9 solid;
+
+}
+
+.rampuptext {
+    color: var(--l_LeoniBlue);
+    font-size: 22px;
+    padding-left: 0!important;
+    padding-right: 10px;
+}
+
+.content {
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #3aa934;
+}
+#page-content-wrapper {
+    /*background-color: #F5F5F5;*/
+}
+
+.test{
+ margin-right: 15%;
+    margin-left: 15%;
+    background-color: white;
+    width: 75%  ;
+
+}
+.gray {
+    background-color: #fafafa;
+}
+
+.container {
+    margin-left: 0!important;
+    margin-right: 0!important;
+}
+
+.container-fluid {
+    padding: 20px;
+}
+
+/*layout end*/
+
+
+/*login start*/
+
+
+.login-page {
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+.login-page .form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+}
+.login-page .form input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.login-page .form button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: var(--l_LeoniBlue);
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.login-page .form button:hover,.form button:active,.form button:focus {
+    background: var(--l_LeoniBlue);
+}
+.login-page .form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+.login-page .form .message a {
+    color: var(--l_LeoniBlue);
+    text-decoration: none;
+}
+.login-page .form .register-form {
+    display: none;
+}
+
+
+tr:nth-of-type(4n+2) {
+    background-color: var(--whiteish);
+}
+
+tr:nth-of-type(4n+1) {
+    background-color: var(--whiteish);
+}
+
+
+
+
+
+
+
+
+
+
+/*login end*/
+
+
+
+
+
+
+
+

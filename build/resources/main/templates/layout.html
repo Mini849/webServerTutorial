@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <script type="text/javascript" th:src="@{/js/layout.js}"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--https://www.w3schools.com/-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--js-->
+
+    <script th:src="@{https://code.jquery.com/jquery-2.2.4.min.js}"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/vue}"></script>
+    <!--Boostrap-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!--Css-->
+    <link th:href="@{/css/main-site-style.css}" href="../static/css/main-site-style.css" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" rel="stylesheet"
+          type="text/css">
+    <link th:href="@{https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css}" rel="stylesheet"
+          type="text/css">
+    <!--js:csrf-->
+    <!--    <meta name="csrf" th:content="${_csrf.token}"/>-->
+    <!--    <meta name="csrf_header" th:content="${_csrf.headerName}"/>-->
+
+    <!--    Boostrap js-->
+
+    <!--    <script th:src="@{https://code.jquery.com/jquery-3.3.1.slim.min.js}" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    <!--    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>-->
+    <!--    <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js}" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>-->
+
+
+</head>
+
+<header>
+    <frame-options policy="SAMEORIGIN"/>
+</header>
+
+<body>
+
+
+<nav class="navbar navbar-expand sticky-top">
+
+    <!--        or sticky, du not know whats better-->
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <a class="nav-link rampuptext" href="#">
+                <img th:src="@{/Images/Ramp_up_logo1.png}" style="width: 5em; margin-right: -15px ; margin-bottom: 7px">
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link butt" th:href="@{/}"
+                       th:classappend="${#request.getServletPath() == '/' ? 'active' : ''}">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link butt" th:href="@{/download}"
+                       th:classappend="${#request.getServletPath() == '/download' ? 'active' : ''}">Downloads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link butt" th:href="@{/manual}"
+                       th:classappend="${#request.getServletPath() == '/manual' ? 'active' : ''}">Manual</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link butt" th:href="@{/feedback}"
+                       th:classappend="${#request.getServletPath() == '/feedback' ? 'active' : ''}">Feedback</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/Images/leoni-Logo.png}" style="width: 6em; margin-right: -10px" alt="">
+        </a>
+    </div>
+
+
+</nav>
+
+
+<div class="gray">
+    <div class="d-flex fill">
+        <div class="mx-auto test">
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+
+
+                <div class="container-fluid">
+                    <section class="my-5" layout:fragment="content">
+                        <p>This is filled by the content template.</p>
+                    </section>
+
+
+                </div>
+
+
+            </div>
+            <!-- /#page-content-wrapper -->
+
+        </div>
+
+
+    </div>
+    <div class="mx-auto test">
+
+        <!-- Footer -->
+        <footer class="page-footer font-small teal">
+
+            <!-- Footer Text -->
+            <div class="container-fluid text-center text-md-left">
+
+                <div class="container"><p></p>
+                    <p style="font-style: italic">"The future belongs to those who believe in the beauty of their
+                        dreams."<br>-Eleanor Roosevelt</p>
+
+                </div>
+                <!-- Footer Text -->
+
+                <!-- Copyright -->
+                <div class="footer-copyright text-center">© 2020 Copyright:
+                    <a href="http://indplatform:9000/">LPT VW group</a>
+                </div>
+                <!-- Copyright -->
+
+        </footer>
+    </div>
+    <!-- Footer -->
+</div>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
+
+<div layout:fragment="content">
+    <section class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>1. General Information</h2>
+                    <hr>
+                    <p>The ramp up tool (further "tool") is an internal tool developed by the BU VW Operations team and
+                        shared to aid the Ramp up costs calculation process where applicable.
+                        The tool aims to offer results that are trackable and extractable by various controlling tools.
+                        Furthermore, as the tool became more detailed and complex, many formulas have been introduced
+                        and
+                        are all visible for the user during the calculation process.
+                        Please note that the formulas are protected but may be edited when Protection mode is shut down
+                        in
+                        the "review" panel. If changes are made and the tool cannot be recovered in the traditional way
+                        or
+                        by ways offered by the authors, please download and use a fresh copy.
+                    </p>
+
+                    <h4>1.1 Tool description</h4>
+                    <hr>
+                    <p>The tool consists of:
+                        <br>• One set up sheet (Base_input sheet)
+                        <br>• One results sheet (Results)
+                        <br>• 9 calculation sheets (8 out of 9 offer additional calculation options for added
+                        flexibility)
+                        <br>• hidden sheets that aid the calculation process
+                    </p>
+
+                    <h4>1.2 Purpose and main use cases</h4>
+                    <hr>
+                    <p>The tool was built and developed for these use cases:
+                        <br>a) In budgeting period for Midterm planning, light approach can be used based on previously
+                        gathered
+                        merData (from experience, similar projects) to estimate future ramp up costs. The estimations may
+                        be
+                        closer to reality when using previously gathered merData in a calculation process.
+                        <br>b) Second use case is in the RFQ process where ramp up costs are a part of the business plan.
+                        The
+                        ramp up costs calculation tool offers more precision, calculation guidance, traceability/base
+                        line
+                        for future backchecks and supports overall understanding of the production concept between
+                        involved
+                        parties as they need to agree on the resulting costs.
+                    </p>
+
+                    <h4>1.3 Interface</h4>
+                    <hr>
+                    <p> Intended usage of the tool consists of filling the Base_Inputs sheet first and then continuing
+                        sheet
+                        by sheet and filling additional information. These are the symbols used in the tool and an
+                        example
+                        screenshot describing their location. </p>
+
+                    <h4>1.3.1 Symbols and Icons used</h4>
+                    <hr>
+                    <p>//TODO </p>
+                    <h4>1.3.2 Example screen</h4>
+                    <hr>
+                    <p>//TODO missing picture</p>
+                    <p></p>
+
+                    <p>
+                        <br>a) Lightbulb – missing inputs help
+                        <br>b) Reset formulas button
+                        <br>c) Navigation arrow – used only in PVC sheet to show equipment table
+                        <br>d) Completion checkbox – check when the sheet is filled and/or information is complete
+                        <br>e) Completion graph – tracks how much information is filled in the sheet (should reach 100%
+                        when
+                        Completion checkbox is clicked)
+                        <br>f) Results graph – shows the results for this sheet by year
+                    </p>
+
+                    <h4>1.4 Abbreviations used</h4>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td>FFG</td>
+                            <td>Fit for growth</td>
+                        </tr>
+                        <tr>
+                            <td>DPCPS</td>
+                            <td>Direct personnel costs, product section</td>
+                        </tr>
+                        <tr>
+                            <td>IPCPS</td>
+                            <td>Indirect personnel costs, product section</td>
+                        </tr>
+                        <tr>
+                            <td>IPCCF</td>
+                            <td>Indirect personnel costs, central function</td>
+                        </tr>
+                        <tr>
+                            <td>IPCCF</td>
+                            <td>Indirect personnel costs, central function</td>
+                        </tr>
+                        <tr>
+                            <td>OPRC</td>
+                            <td>Other Personnel related costs</td>
+                        </tr>
+                        <tr>
+                            <td>MCFTH</td>
+                            <td>Material cost for training harnesses</td>
+                        </tr>
+                        <tr>
+                            <td>PC</td>
+                            <td>Production costs</td>
+                        </tr>
+                        <tr>
+                            <td>TS</td>
+                            <td>Transportation and Samples</td>
+                        </tr>
+                        <tr>
+                            <td>PVC</td>
+                            <td>Product validation costs</td>
+                        </tr>
+                        <tr>
+                            <td>PM</td>
+                            <td>Project management</td>
+                        </tr>
+                        <tr>
+                            <td>RFQ</td>
+                            <td>Request for quotation</td>
+                        </tr>
+                        <tr>
+                            <td>D&D</td>
+                            <td>Design and development</td>
+                        </tr>
+                        <tr>
+                            <td>HR</td>
+                            <td>Human resources</td>
+                        </tr>
+                        <tr>
+                            <td>PC&L</td>
+                            <td>Production, control and logistics</td>
+                        </tr>
+                        <tr>
+                            <td>IT</td>
+                            <td>Information technology</td>
+                        </tr>
+                        <tr>
+                            <td>PPE</td>
+                            <td>Production process engineering</td>
+                        </tr>
+                        <tr>
+                            <td>SoP</td>
+                            <td>Start of Production</td>
+                        </tr>
+                        <tr>
+                            <td>Nh</td>
+                            <td>Normhour</td>
+                        </tr>
+                        <tr>
+                            <td>KSK</td>
+                            <td>Customer specific harness</td>
+                        </tr>
+                        <tr>
+                            <td>JIT</td>
+                            <td>Just in time</td>
+                        </tr>
+                        <tr>
+                            <td>WPA</td>
+                            <td>Wire preparation area</td>
+                        </tr>
+                        <tr>
+                            <td>LEPS</td>
+                            <td>LEONI Production Server</td>
+                        </tr>
+                        <tr>
+                            <td>HV</td>
+                            <td>High Voltage</td>
+                        </tr>
+                        <tr>
+                            <td>BC3O</td>
+                            <td>Bordnetz control office</td>
+                        </tr>
+                        <tr>
+                            <td>HC</td>
+                            <td>Head count</td>
+                        </tr>
+                        <tr>
+                            <td>BU</td>
+                            <td>Business unit</td>
+                        </tr>
+                        <tr>
+                            <td>QM</td>
+                            <td>Quality management</td>
+                        </tr>
+                        <tr>
+                            <td>SHE</td>
+                            <td>Safety, health and environment</td>
+                        </tr>
+                    </table>
+                    <p>
+                        <br>
+                    </p>
+
+                    <h4>1.5 Risks associated with using the tool</h4>
+                    <hr>
+                    <p>As in any other calculation process, wrong result is the main risk. To avoid this, please
+                        consider
+                        these remarks:
+                        <br>• The quality of inputs directly influences the quality of the results
+                        <br>• Although the document is locked and protected from editing, no password is applied, and
+                        users are
+                        free to unlock and edit the file together with the formulas within as they wish
+                        <br>• The Base_Inputs sheet and its complexity may indicate that the calculation process is
+                        automatic,
+                        however that is not the case and the user is required to doublecheck partial results of each
+                        sheet.
+                        <br>• Blue cells allow deletion of the build-in formula for more flexibility when needed, yet
+                        they do
+                        not indicate this state
+                        <br>• User may bypass the "sheet completion check" system by blindly filling the required inputs
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>

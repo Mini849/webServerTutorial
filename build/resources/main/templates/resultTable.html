@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+
+<head>
+
+    <title>Ramp up Tool: Resutl Table</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.css}">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.js}"></script>
+</head>
+
+
+
+
+<body class="my-auto">
+<div layout:fragment="content" id="app">
+
+    <div class="d-flex  justify-content-end " style="padding-bottom: 5px">
+        <a th:href="@{/history}" class="btn">History</a>
+
+    </div>
+
+    <table class="table" id="table" v-if="tableData.length">
+        <thead>
+        <tr style="background: white">
+            <th merData-field="id">Item ID</th>
+            <th merData-field="email">email</th>
+            <th merData-field="priority">priority</th>
+            <th merData-field="category">category</th>
+            <th merData-field="position">position</th>
+            <th merData-field="filepath">pic</th>
+            <th merData-field="date">date</th>
+            <th merData-field="progress">progress</th>
+        </tr>
+        </thead>
+        <tbody>
+        <template v-for="item in notFalse">
+            <tr :key="item.id" :class="item.progress">
+                <td>{{item.id}}</td>
+                <td>{{item.email}}</td>
+                <td :class="priorityClass(item)">{{item.priority}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.position}}</td>
+                <td><a :href="item.filepath" target="_blank">pic</a></td>
+                <td>{{item.date}}</td>
+                <td>
+                    <div class="custom-control custom-checkbox">
+                        <input class="form-check-input labeled" type="checkbox" v-model="item.progress"
+                               @click="send(item)">
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr :class="item.progress">
+                <td colspan="8  ">{{item.content}}</td>
+            </tr>
+        </template>
+        </tbody>
+    </table>
+<script th:inline="javascript">
+    document.documentElement.style
+        .setProperty('--maxWidth', '1120px');
+    axios.defaults.headers.common[$('meta[name="csrf_header"]').attr('content')] = $('meta[name="csrf"]').attr('content');
+
+  var ip = [[${ip}]];
+  var port = [[${port}]];;
+
+    const app = new Vue(
+        {
+            el: '#app',
+            merData() {
+                return {
+
+                    tableData: []
+                }
+            },
+            computed: {
+
+                notFalse() {
+                    return [...this.tableData].filter(item => item.progress === false);
+                },
+
+                sortedTableData() {
+                    return [...this.tableData].sort((a, b) => {
+                        return a.progress ? 1 : -1
+                    })
+                }
+            },
+
+            methods: {
+                send(item) {
+                    let checkboxF = {...item};
+                    if (item.progress === true) {
+                        checkboxF.progress = false;
+                    } else if (item.progress === false) {
+                        checkboxF.progress = true;
+                    }
+
+                    console.log(ip + ":" + port + "/api/saveFeedback")
+                    axios.post(ip + ":" + port + "/api/saveFeedback", checkboxF)
+
+
+                .catch(error => {
+                        });
+                    console.log(checkboxF.progress);
+                },
+                priorityClass(item) {
+                    switch (item.priority) {
+                        case "high":
+                            return 'text-danger'
+                        case "medium":
+                            return 'text-warning'
+                        case "low":
+                            return 'text-info'
+                        case "very-low":
+                            return 'text-success'
+                    }
+                }
+            },
+            async created() {
+                let that = this;
+                console.log(ip + ":" + port +  "/api/db")
+                await $.getJSON(ip + ":" + port +  "/api/db", function (merData) {
+
+                    that.tableData = merData;
+                })
+            }
+        });
+</script>
+
+</div>
+</body>
+</html>
