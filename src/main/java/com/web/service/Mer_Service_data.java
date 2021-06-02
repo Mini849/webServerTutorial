@@ -1,7 +1,7 @@
 package com.web.service;
 
 
-import com.web.model.MerM_Data;
+import com.web.model.Mer_Data;
 import com.web.repository.MerRepo_data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +21,11 @@ public class Mer_Service_data {
         return mer_m_data;
     }
 
-    public MerM_Data getById(long id) {
+    public Mer_Data getById(long id) {
         return merRepositary_data.findById(id).get();
     }
 
-    public void saveOrUpdate(MerM_Data data) {
+    public void saveOrUpdate(Mer_Data data) {
         merRepositary_data.save(data);
     }
 

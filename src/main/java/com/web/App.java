@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class App {
@@ -21,9 +22,7 @@ public class App {
     private static String backlash;
 
 
-
     public static void main(String[] args) {
-
 
 
         Flyway flyway = Flyway.configure().dataSource("jdbc:h2:file:./data/employees", "sa", null).load();
@@ -35,4 +34,5 @@ public class App {
 
 
     }
+
 }

@@ -1,11 +1,7 @@
 package com.web.api;
 
 import com.web.getModel.MerGet_Data;
-import com.web.model.MerM_Data;
-import com.web.model.Mer_Trailers;
-import com.web.model.Mer_Yoink;
-import com.web.postModel.Mer_Data;
-import com.web.model.Feedback;
+import com.web.model.*;
 
 
 import com.web.service.*;
@@ -40,6 +36,8 @@ public class ApiController {
     Mer_Service_trailers mer_service_trailers;
 
 
+
+
     @GetMapping("/feedback/{id}")
     private Feedback getFeedback(long id) {
         return feedbackService.getFeedbackByID(id);
@@ -56,44 +54,48 @@ public class ApiController {
     }
 
     @RequestMapping(
-            value = "/Meerane/reworkData",
+            value = "/Glechau/reworkData",
             method = RequestMethod.POST)
-    public void process(@RequestBody Mer_Data merData) {
+    public void merData(@RequestBody List<String> merData) {
 
         mer_service_data.deleteAll();
-        mer_service_yoink.deleteAll();
+
+        for (String a : merData) {
+            Mer_Data mer_data = new Mer_Data();
+            mer_data.setData(a);
+            mer_service_data.saveOrUpdate(mer_data);
+        }
+    }
+
+
+    @RequestMapping(
+            value = "/Meerane/trailers",
+            method = RequestMethod.POST)
+    public void herTrailers(@RequestBody List<String> merData) {
+
         mer_service_trailers.deleteAll();
 
-        for (String a : merData.getData()) {
-            MerM_Data merM_data = new MerM_Data();
-            merM_data.setData(a);
-            mer_service_data.saveOrUpdate(merM_data);
-        }
-
-        for (String a : merData.getYoink()) {
-            Mer_Yoink mer_yoink = new Mer_Yoink();
-            mer_yoink.setYoink(a);
-            mer_service_yoink.saveOrUpdate(mer_yoink);
-        }
-
-        for (String a : merData.getTrailers()) {
+        for (String a : merData) {
             Mer_Trailers mer_trailers = new Mer_Trailers();
             mer_trailers.setTrailers(a);
             mer_service_trailers.saveOrUpdate(mer_trailers);
         }
-
-
     }
 
-    @GetMapping("/Meerane/reworkData")
-    private List<String> getAllDataMeeranes() {
+    @GetMapping("/Glechau/reworkData")
+    private List<String> meeraneGetDataReworks() {
         return mer_service_data.getAll();
+    }
+    @GetMapping("/Meerane/trailers")
+    private List<String> meeraneGetDataTrailers() {
+        return mer_service_trailers.getAll();
     }
 
     @GetMapping("Meerane/all")
     private MerGet_Data getAllMerData() {
         mer_service_data.getAll();
         mer_service_yoink.getAll();
+        mer_service_trailers.getAll();
 
         MerGet_Data w = new MerGet_Data();
         w.data = mer_service_data.getAll();
@@ -102,11 +104,9 @@ public class ApiController {
         return w;
     }
 
-
     @PostMapping("/saveFeedback")
     private long saveFeedback(@RequestBody Feedback feedback) {
         feedbackService.saveOrUpdate(feedback);
         return feedback.getId();
     }
-
 }

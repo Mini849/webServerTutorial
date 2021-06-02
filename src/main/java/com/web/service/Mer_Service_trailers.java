@@ -1,7 +1,6 @@
 package com.web.service;
 
 
-import com.web.model.MerM_Data;
 import com.web.model.Mer_Trailers;
 import com.web.repository.MerRepo_trailers;
 import org.springframework.beans.factory.annotation.Autowired;

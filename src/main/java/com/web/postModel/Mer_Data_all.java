@@ -2,13 +2,13 @@ package com.web.postModel;
 
 import java.util.List;
 
-public class Mer_Data {
+public class Mer_Data_all {
 
     private List<String> data;
     private List<String> yoink;
     private List<String> trailers;
 
-    public Mer_Data(List<String> data, List<String> yoink, List<String> trailers) {
+    public Mer_Data_all(List<String> data, List<String> yoink, List<String> trailers) {
         this.data = data;
         this.yoink = yoink;
         this.trailers = trailers;
