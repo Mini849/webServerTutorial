@@ -6,11 +6,13 @@ import com.web.model.*;
 
 import com.web.service.*;
 
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.io.IOException;
 import java.util.*;
 
 @RestController
@@ -36,8 +38,6 @@ public class ApiController {
     Mer_Service_trailers mer_service_trailers;
 
 
-
-
     @GetMapping("/feedback/{id}")
     private Feedback getFeedback(long id) {
         return feedbackService.getFeedbackByID(id);
@@ -59,6 +59,7 @@ public class ApiController {
     public void merData(@RequestBody List<String> merData) {
 
         mer_service_data.deleteAll();
+        reworkService.save(merData);
 
         for (String a : merData) {
             Mer_Data mer_data = new Mer_Data();
@@ -74,7 +75,7 @@ public class ApiController {
     public void herTrailers(@RequestBody List<String> merData) {
 
         mer_service_trailers.deleteAll();
-
+        reworkService.saveLwk(merData);
         for (String a : merData) {
             Mer_Trailers mer_trailers = new Mer_Trailers();
             mer_trailers.setTrailers(a);
@@ -83,12 +84,13 @@ public class ApiController {
     }
 
     @GetMapping("/Glechau/reworkData")
-    private List<String> meeraneGetDataReworks() {
-        return mer_service_data.getAll();
-    }
+    private String meeraneGetDataReworks() throws IOException, JSONException {
+        return reworkService.getPayload();
+             }
+
     @GetMapping("/Meerane/trailers")
-    private List<String> meeraneGetDataTrailers() {
-        return mer_service_trailers.getAll();
+    private String meeraneGetDataTrailers() throws IOException, JSONException {
+        return reworkService.getPayloadLwk();
     }
 
     @GetMapping("Meerane/all")

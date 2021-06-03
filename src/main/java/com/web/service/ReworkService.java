@@ -46,7 +46,7 @@ public class ReworkService {
     }
 
 
-    public void savetype(List<String> data) {
+    public void saveLwk(List<String> data) {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Writing to a file
@@ -56,7 +56,7 @@ public class ReworkService {
         }
     }
 
-    public String getPayloadtype() throws JSONException, IOException {
+    public String getPayloadLwk() throws JSONException, IOException {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
         try (FileReader reader = new FileReader(location + "datatype.json"))
